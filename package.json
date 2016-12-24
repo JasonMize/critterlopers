@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "Critterlopers",
   "version": "1.0.0",
-  "description": "",
-  "repository": "",
+  "description": "A chronicle of the animal rebellion.",
+  "repository": "https://github.com/JasonMize/critterlopers",
   "engines": {
     "node": "6.8.1"
   },
@@ -12,7 +12,7 @@
     "eslint": "eslint",
     "postinstall": "gulp webpack"
   },
-  "author": "",
+  "author": "Tony Mize & Jason Mize",
   "license": "ISC",
   "devDependencies": {
   },

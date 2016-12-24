@@ -1,7 +1,4 @@
-# DJANGO SEED
+# Critterlopers
 
-Starting point for Django, Django Rest Framework, Angular, Webpack and Gulp projects.
+A webcomic that chronicles the animal kingdom's rebellion against their human overlords. 
 
-See the using-django-seed.md in the docs for usage.
-
-**Replace the contents of this doc with a README for your project**
