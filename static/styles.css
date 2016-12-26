@@ -1,3 +1,17 @@
-/*body {
-    margin-top: 70px;
-}*/
+.header-left {
+    margin: 10px 0px;
+    border: 1px solid #000;
+    height: 250px;
+}
+.header-left img {
+    max-height: 250px;
+}
+
+.header-right {
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #000;
+    height: 250px;
+}
+
+

@@ -5,7 +5,7 @@ import ComicPageController from './comic-page.controller';
 const comicPageComponent = {
     template,
     controller: ComicPageController,
-    controllerAs: 'comicPageCtrl',
+    controllerAs: 'comicCtrl',
 };
 
 export default comicPageComponent;

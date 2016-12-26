@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Comic
+from .models import Comic, HeaderImage
 
 class ComicSerializer(serializers.ModelSerializer):
    
@@ -9,4 +9,15 @@ class ComicSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
+            'image',
+        )
+
+class HeaderImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = HeaderImage
+        fields = (
+            'id',
+            'title',
+            'image',
         )
