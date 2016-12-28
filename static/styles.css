@@ -1,17 +1,51 @@
-.header-left {
-    margin: 10px 0px;
-    border: 1px solid #000;
-    height: 250px;
+body {
+    font-family: 'Source Serif Pro', serif;
 }
-.header-left img {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Baloo Thambi', cursive;
+}
+
+
+/*****************************************************/
+/*    HEADER    */
+/*****************************************************/
+.header-all {
+    margin-top: 10px;
+}
+.header-title {
+    font-size: 5em;
+    font-weight: bolder;
+    font-family: 'Baloo Thambi', cursive;
+}
+.header-byline {
+    font-size: 2.5em;
+}
+.header-image {
+    float: left;
+    margin-right: 15px;
+}
+.header-image img {
+    max-width: 90vw;
     max-height: 250px;
+    border-radius: 25px;
+    border: 5px solid black;
 }
-
-.header-right {
-    margin: 10px 0px;
-    padding: 10px;
-    border: 1px solid #000;
-    height: 250px;
+.header-links {
+    padding-top: 18px;
 }
-
-
+.header-links span {
+    margin-right: 15px;
+    font-size: 2em;
+}
+@media screen and (max-width:  480px) {
+    .header-image img { margin-bottom: 10px; }
+    .header-title  { font-size: 2.5em; }
+    .header-byline { font-size: 1.5em; }
+    .header-links span { font-size: 1em; margin: 0px 15px 0px 0px; }
+}

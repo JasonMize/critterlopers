@@ -1,34 +1,40 @@
 <header>
-
-    <nav class="navbar navbar-default navbar-static-top">
-
+    <nav class="navbar navbar-static-top">
         <div class="container-fluid">
             <div class="row">
-        
-                <div class="col-sm-4">
-                    <div class="header-left">
-                        <img ng-src="{{ comicCtrl.randomHeaderImage.image }}" alt="">                        
-                    </div>
-                </div>
+                
+                <div class="header-all">
 
-                <div class="col-sm-8">
-                    <div class="header-right">                        
-                        <h1>CRITTERLOPERS</h1>
-                        <div><a href="#">LINK</a></div>
-                        <div><a href="#">LINK</a></div>
-                        <div><a href="#">LINK</a></div>
-                        <div><a href="#">LINK</a></div>
+                    <div class="header-image">
+                        <a ui-sref="index">
+                            <img ng-src="{{ comicCtrl.randomHeaderImage.image }}" alt="">
+                        </a>
                     </div>
-                </div>            
+
+                    <div class="header-title">CRITTERLOPERS</div>
+                    <div class="header-byline">A Story Of Beasts Suburban.</div>
+                    
+                    <div class="header-links">
+                        <span><a href="#">ARCHIVES</a></span>
+                        <span><a href="#">CAST</a></span>
+                        <span><a href="#">BLOG</a></span>
+                        <span><a ui-sref="aboutPage">ABOUT</a></span>
+                    </div>
+
+                </div>
                 
             </div>
         </div>
-
     </nav>
-
 </header>
 
 <h1>
     Insert comic here...
 </h1>
+<div class="container">
 
+    <!-- <div ui-view></div> -->
+    <about-page></about-page>
+
+     
+ </div>

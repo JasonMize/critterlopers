@@ -10,8 +10,6 @@ function ComicPageController(comicAPIService) {
         ctrl.headerImageIndex = Math.floor(Math.random() * (ctrl.maxRange));
         ctrl.randomHeaderImage = ctrl.headerImageList[ctrl.headerImageIndex];
     }
-
-
     // get all HeaderImages
     function getHeaderImage() {
         return comicAPIService.headerimage.get().$promise.then((data) => {

@@ -3,6 +3,7 @@ import angularResource from 'angular-resource';
 
 import comicAPIService from './comic-api.service';
 import comicPageComponent from './comic-page.component';
+import aboutPageComponent from './about-page.component';
 
 const ComicModule = angular.module('comics', [
     angularResource,
@@ -12,6 +13,7 @@ const ComicModule = angular.module('comics', [
         $resourceProvider.defaults.stripTrailingSlashes = false;
     })
     .factory('comicAPIService', comicAPIService)
-    .component('comicPage', comicPageComponent);
+    .component('comicPage', comicPageComponent)
+    .component('aboutPage', aboutPageComponent);
 
 export default ComicModule;
