@@ -1,7 +1,6 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import angularCookies from 'angular-cookies';
-import timer from 'angular-timer';
 
 import ComicModule from '../comic/comic.module';
 import appComponent from './app.component';
