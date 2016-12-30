@@ -5,6 +5,7 @@ from comic.viewsets import *
 
 router = routers.DefaultRouter()
 router.register(r'comic', ComicViewSet)
+router.register(r'comic', CastViewSet)
 router.register(r'headerimage', HeaderImageViewSet)
 
 urlpatterns = [
