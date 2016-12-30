@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from .models import Comic, HeaderImage
-from .serializers import ComicSerializer, HeaderImageSerializer
+from .models import *
+from .serializers import *
 
 class ComicViewSet(viewsets.ModelViewSet):
     queryset = Comic.objects.all()

@@ -5,7 +5,7 @@ import comicAPIService from './comic-api.service';
 import comicPageComponent from './comic-page.component';
 import aboutPageComponent from './about-page.component';
 
-const ComicModule = angular.module('comics', [
+const ComicModule = angular.module('comic', [
     angularResource,
 ])
     .config(($resourceProvider) => {

@@ -30,8 +30,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'comic',
     'core',
+    'comic',
     'api',
 )
 

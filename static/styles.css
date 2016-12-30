@@ -1,34 +1,25 @@
 body {
     font-family: 'Source Serif Pro', serif;
+    font-size: 16px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Baloo Thambi', cursive;
-}
+h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
 
 
 /*****************************************************/
 /*    HEADER    */
 /*****************************************************/
-.header-all {
-    margin-top: 10px;
-}
+.header-all { margin: 10px 10px 0px 10px; }
 .header-title {
     font-size: 5em;
     font-weight: bolder;
     font-family: 'Baloo Thambi', cursive;
+    margin-top: -15px;
 }
-.header-byline {
-    font-size: 2.5em;
-}
+.header-byline { font-size: 2.5em;  margin-top: -25px; }
 .header-image {
     float: left;
-    margin-right: 15px;
+    margin: 15px 15px 0px 0px;
 }
 .header-image img {
     max-width: 90vw;
@@ -36,16 +27,43 @@ h6 {
     border-radius: 25px;
     border: 5px solid black;
 }
-.header-links {
-    padding-top: 18px;
-}
+.header-links { padding-top: 18px; }
 .header-links span {
     margin-right: 15px;
     font-size: 2em;
 }
 @media screen and (max-width:  480px) {
     .header-image img { margin-bottom: 10px; }
-    .header-title  { font-size: 2.5em; }
-    .header-byline { font-size: 1.5em; }
-    .header-links span { font-size: 1em; margin: 0px 15px 0px 0px; }
+    .header-title  { font-size: 2.3em; }
+    .header-byline { font-size: 1.3em; margin-top: 0px;}
+    .header-links span { font-size: .9em; margin: 0px 15px 0px 0px; }
 }
+
+
+/*****************************************************/
+/*    ABOUT    */
+/*****************************************************/
+
+.about-image { margin-left: -20px; }
+@media screen and (max-width:  480px) {
+    .about-image { margin-left: -5px; } 
+}
+
+
+/*****************************************************/
+/*    FOOTER    */
+/*****************************************************/
+footer { padding: 50px 10px 0px 10px; }
+
+
+
+
+
+
+
+
+
+
+
+
+

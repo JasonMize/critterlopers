@@ -2,8 +2,8 @@ from rest_framework import serializers
 
 from .models import Comic, HeaderImage
 
+
 class ComicSerializer(serializers.ModelSerializer):
-   
     class Meta:
         model = Comic
         fields = (
@@ -12,8 +12,8 @@ class ComicSerializer(serializers.ModelSerializer):
             'image',
         )
 
-class HeaderImageSerializer(serializers.ModelSerializer):
 
+class HeaderImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeaderImage
         fields = (

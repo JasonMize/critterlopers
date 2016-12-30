@@ -17,15 +17,15 @@ const AppModule = angular.module('app', [
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('index', {
-                url: '/',
-                component: 'comicPage',
-            })
+        .state('index', {
+            url: '/',
+            component: 'comicPage',
+        })
 
-            .state('aboutPage', {
-                url: '/about',
-                component: 'aboutPage',
-            });
+        .state('aboutPage', {
+            url: '/about',
+            component: 'aboutPage',
+        });
     })
 
     .run(($http, $cookies) => {
