@@ -13,6 +13,7 @@ class ComicSerializer(serializers.ModelSerializer):
             'issue',
             'image',
             'date_added',
+            'cast_members',
         )
 
 class CastSerializer(serializers.ModelSerializer):
@@ -22,7 +23,7 @@ class CastSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'image',
-            'comic',
+            'comics',
         )
 
 

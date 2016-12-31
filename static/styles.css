@@ -54,8 +54,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
 /*****************************************************/
 /*    FOOTER    */
 /*****************************************************/
-footer { padding: 50px 10px 0px 10px; }
-.footer-links { padding-top: 18px; }
+footer { padding: 50px 15px 15px 15px; }
+.footer-links { padding-top: 15px; }
 .footer-links span {
     margin-right: 15px;
     font-size: 2em;
@@ -63,12 +63,14 @@ footer { padding: 50px 10px 0px 10px; }
 .footer-social-media a div {
     float: left;
     width: 80px;
+    margin-right: 25px;
 }
 .footer-social-media a {
 }
 .footer-social-media i {
     font-size: 5em;
-    margin-right: 20px;
+}
+.footer-copyright {
 }
 @media screen and (max-width:  480px) {
     .footer-links span { font-size: .9em; margin: 0px 15px 0px 0px; }

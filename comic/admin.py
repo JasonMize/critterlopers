@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import *
 
+
 class ComicAdmin(admin.ModelAdmin):
     list_display = (
         'page_number',
@@ -10,6 +11,7 @@ class ComicAdmin(admin.ModelAdmin):
         'image',
         'date_added',
     )
+
 
 class CastAdmin(admin.ModelAdmin):
     list_display = (
