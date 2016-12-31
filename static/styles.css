@@ -1,5 +1,5 @@
 body {
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Source Serif Pro' georgia, serif;
     font-size: 16px;
 }
 
@@ -27,7 +27,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
     border-radius: 25px;
     border: 5px solid black;
 }
-.header-links { padding-top: 18px; }
+.header-links-top { padding-top: 15px; }
+.header-links-bottom { padding-top: 0px; }
 .header-links span {
     margin-right: 15px;
     font-size: 2em;
@@ -54,6 +55,24 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
 /*    FOOTER    */
 /*****************************************************/
 footer { padding: 50px 10px 0px 10px; }
+.footer-links { padding-top: 18px; }
+.footer-links span {
+    margin-right: 15px;
+    font-size: 2em;
+}
+.footer-social-media a div {
+    float: left;
+    width: 80px;
+}
+.footer-social-media a {
+}
+.footer-social-media i {
+    font-size: 5em;
+    margin-right: 20px;
+}
+@media screen and (max-width:  480px) {
+    .footer-links span { font-size: .9em; margin: 0px 15px 0px 0px; }
+}
 
 
 

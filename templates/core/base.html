@@ -31,36 +31,56 @@
 
 <body ng-app='app'>
 
-            <div class="col-md-10 col-offset-med-1">
-            
+    <div class="col-md-10 col-offset-med-1">
 
-                {% block content %}
+        {% block content %}
 
-                    <div class="container">
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert alert-success">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        {% block page_content %}
-                            
-                        {% endblock page_content %}
-                    </div>
-
-                {% endblock content %}
-
-                <footer class="row">
-                    <div class="container-fluid">
-                        <small>
-                            &copy; Jason Mize & Tony Mize, 2012-2017
-                        </small>
-                    </div>
-                </footer>
-
-                
+            <div class="container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% block page_content %}
+                    
+                {% endblock page_content %}
             </div>
+
+        {% endblock content %}
+
+        <footer class="row">
+            <div class="container-fluid">
+                <div class="footer-links">
+                    <div class="footer-social-media">
+                        <!-- <small>Follow us on:</small> -->
+                        <a href="https://www.instagram.com/critterlopers/" target="_blank">
+                            <div>
+                                <i class="fa fa-instagram" aria-hidden="true"></i> 
+                                instagram
+                            </div>
+                        </a>
+                        <a href="http://www.facebook.com/Critterlopers" target="_blank">
+                            <div>
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                Facebook    
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container-fluid">
+                    <small>
+                        &copy; Jason Mize & Tony Mize, 2012-2017
+                    </small>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
 
     {% block body_scripts %}
       
