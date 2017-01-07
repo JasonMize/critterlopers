@@ -5,6 +5,7 @@ from .models import *
 
 class ComicAdmin(admin.ModelAdmin):
     list_display = (
+        'sort_number',
         'issue',
         'page_number',
         'title',

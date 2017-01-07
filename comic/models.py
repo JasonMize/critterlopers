@@ -12,9 +12,11 @@ class Cast(models.Model):
 
 
 class Comic(models.Model):
-    page_number = models.CharField(max_length=30, blank=True, null=True )
+    MAX_PAGES_PER_ISSUE = 1000
+    sort_number = models.IntegerField(blank=True, null=True)
+    page_number = models.IntegerField(blank=True, null=True )
     title = models.CharField(max_length=200, blank=True, null=True)
-    issue = models.CharField(max_length= 100, blank=True, null=True)
+    issue = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='comics', blank=True, null=True)
     date_added = models.DateTimeField(
         help_text="Posted on: ",
@@ -23,10 +25,17 @@ class Comic(models.Model):
     cast_members = models.ManyToManyField(Cast, related_name="comics", blank=True)
 
     class Meta:
-        ordering = ['-date_added']
+        ordering = ['-sort_number', '-date_added']
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        # self.sort_number = self.issue
+        self.sort_number = self.issue * self.MAX_PAGES_PER_ISSUE + self.page_number
+        super(Comic, self).save(*args, **kwargs) # Call the "real" save() method.
+
+
 
 
 class HeaderImage(models.Model):

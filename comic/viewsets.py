@@ -4,7 +4,7 @@ from .models import *
 from .serializers import *
 
 class ComicViewSet(viewsets.ModelViewSet):
-    queryset = Comic.objects.order_by('-issue','-page_number', '-date_added').all()
+    queryset = Comic.objects.order_by('-sort_number', '-issue', '-page_number', '-date_added').all()
     serializer_class = ComicSerializer
 
 class CastViewSet(viewsets.ModelViewSet):
