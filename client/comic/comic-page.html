@@ -1,1 +1,34 @@
-<h1>Insert comic here...</h1>
+<h1>{{ comicCtrl.comics[0].title }}</h1>
+<h3>Issue: {{ comicCtrl.comics[0].issue }}</h3>
+<h3>Page: {{ comicCtrl.comics[0].page_number }}</h3>
+<h3>Date Added: {{ comicCtrl.comics[0].date_added | '%Y-%m-%d'}}</h3>
+
+<div class="page-controls">
+    <span class="page-controls-first">
+        <a href="#">
+            <i class="fa fa-step-backward" aria-hidden="true"></i>        
+        </a>
+    </span>
+    <span class="page-controls-previous">
+        <a href="#">
+            <i class="fa fa-caret-left" aria-hidden="true"></i>
+        </a>
+    </span>
+    <span class="page-controls-next">
+        <a href="#">
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </a>
+    </span>
+    <span class="page-controls-last">
+        <a href="#">
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+        </a>
+    </span>
+</div>
+
+<div>
+    <img src="{{ comicCtrl.comics[0].image }}" alt="{{ comicCtrl.comics[0].title }}" class="img-responsive">
+</div>
+
+
+

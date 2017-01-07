@@ -5,9 +5,9 @@ from .models import *
 
 class ComicAdmin(admin.ModelAdmin):
     list_display = (
+        'issue',
         'page_number',
         'title',
-        'issue',
         'image',
         'date_added',
     )
@@ -16,6 +16,7 @@ class ComicAdmin(admin.ModelAdmin):
 class CastAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'description',
         'image',
     )
 

@@ -1,5 +1,5 @@
 
-function ComicPageController(comicAPIService) {
+function ArchivePageController(comicAPIService) {
     const ctrl = this;
 
 
@@ -16,5 +16,5 @@ function ComicPageController(comicAPIService) {
     init();
 }
 
-export default ComicPageController;
+export default ArchivePageController;
 

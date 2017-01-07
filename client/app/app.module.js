@@ -25,6 +25,11 @@ const AppModule = angular.module('app', [
         .state('aboutPage', {
             url: '/about',
             component: 'aboutPage',
+        })
+
+        .state('archivePage', {
+            url: '/archive',
+            component: 'archivePage',
         });
     })
 
