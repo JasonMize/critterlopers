@@ -18,8 +18,14 @@ const AppModule = angular.module('app', [
 
         $stateProvider
         .state('index', {
-            url: '/',
+            url: '/comic/{issueId}',
             component: 'comicPage',
+            resolve: {
+                issueId(comicAPIService, $stateParams) {
+                    return comicAPIService
+                        .getComic($stateParams.comicId);
+                },
+            },
         })
 
         .state('aboutPage', {

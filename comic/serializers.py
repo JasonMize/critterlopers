@@ -26,6 +26,15 @@ class CastSerializer(serializers.ModelSerializer):
             'comics',
         )
 
+class IssueSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Issue
+        fields = (
+            'id',
+            'title',
+            'image',
+            'issue_number',
+        )
 
 class HeaderImageSerializer(serializers.ModelSerializer):
     class Meta:

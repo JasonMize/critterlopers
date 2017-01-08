@@ -14,3 +14,7 @@ class CastViewSet(viewsets.ModelViewSet):
 class HeaderImageViewSet(viewsets.ModelViewSet):
     queryset = HeaderImage.objects.all()
     serializer_class = HeaderImageSerializer
+
+class IssueViewSet(viewsets.ModelViewSet):
+    queryset = Issue.objects.all()
+    serializer_class = IssueSerializer
