@@ -1,6 +1,11 @@
 
 function comicAPIService($resource) {
     const api = {
+        getIssue(id) {
+            return this.issue.get({ id }).$promise.then((data) => {
+                return data;
+            });
+        },
         getComic(id) {
             return this.comic.get({ id }).$promise.then((data) => {
                 return data;
