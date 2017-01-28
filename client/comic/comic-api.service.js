@@ -18,7 +18,7 @@ function comicAPIService($resource) {
         comic: $resource('/api/comic/:id',
             { id: '@id' },
         ),
-        issuePage: $resource('/api/issuepage/:issueId/:pageNumber',
+        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber',
             {
                 issueId: '@issueId',
                 pageNumber: '@pageNumber',

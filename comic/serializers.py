@@ -4,6 +4,8 @@ from .models import *
 
 
 class ComicSerializer(serializers.ModelSerializer):
+    
+    
     class Meta:
         model = Comic
         fields = (

@@ -18,9 +18,6 @@ const AppModule = angular.module('app', [
 
         $stateProvider
         .state('index', {
-            // url: '/',
-            // component: 'comicPage',
-
             url: '/{issueId}/{pageNumber}',
             component: 'comicPage',
             resolve: {
