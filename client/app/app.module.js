@@ -21,14 +21,14 @@ const AppModule = angular.module('app', [
             // url: '/',
             // component: 'comicPage',
 
-            url: '/{issueId}/{comicId}',
+            url: '/{issueId}/{pageNumber}',
             component: 'comicPage',
             resolve: {
-                comicId(comicAPIService, $stateParams) {
+                comic(comicAPIService, $stateParams) {
                     return comicAPIService
-                        .getComic($stateParams.comicId);
+                        .getComic($stateParams.issueId, $stateParams.pageNumber);
                 },
-                issueId(comicAPIService, $stateParams) {
+                issue(comicAPIService, $stateParams) {
                     return comicAPIService
                         .getIssue($stateParams.issueId);
                 },

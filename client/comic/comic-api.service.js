@@ -6,8 +6,8 @@ function comicAPIService($resource) {
                 return data;
             });
         },
-        getComic(id) {
-            return this.comic.get({ id }).$promise.then((data) => {
+        getComic(issueId, pageNumber) {
+            return this.issuePage.get({ issueId, pageNumber }).$promise.then((data) => {
                 return data;
             });
         },
@@ -17,6 +17,12 @@ function comicAPIService($resource) {
         ),
         comic: $resource('/api/comic/:id',
             { id: '@id' },
+        ),
+        issuePage: $resource('/api/issuepage/:issueId/:pageNumber',
+            {
+                issueId: '@issueId',
+                pageNumber: '@pageNumber',
+            }
         ),
         cast: $resource('/api/cast/:id',
             { id: '@id' },
