@@ -10,7 +10,8 @@ router.register(r'headerimage', HeaderImageViewSet)
 router.register(r'issue', IssueViewSet)
 
 urlpatterns = [
-            url(r'^', include(router.urls)), 
+            url(r'^comic/(?P<issueId>\d+)/(?P<pageNumber>\d+)/', IssuePageViewSet.as_view()),
+            url(r'^', include(router.urls)),
 ]
 
 
