@@ -11,6 +11,7 @@ function comicAPIService($resource) {
                 return data;
             });
         },
+        // TODO: just like issuePage but with 3rd argument, navigation
 
         headerimage: $resource('/api/headerimage/:id/',
             { id: '@id' },
@@ -18,7 +19,7 @@ function comicAPIService($resource) {
         comic: $resource('/api/comic/:id',
             { id: '@id' },
         ),
-        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber',
+        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber/',
             {
                 issueId: '@issueId',
                 pageNumber: '@pageNumber',

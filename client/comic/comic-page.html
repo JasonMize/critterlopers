@@ -1,16 +1,11 @@
-<!-- <div ng-repeat='comic in comicCtrl.comics'>
-    {{ comic.title }}
-</div>  -->
 
-<div>ID: {{ comicCtrl.comicId.id}}</div>
-<!-- <h1>{{ comicCtrl.comic.title }}</h1> -->
-<!-- <h3>Issue: {{ comicCtrl.comic.issue }}</h3> -->
-<!-- <h3>Page: {{ comicCtrl.comic.page_number }}</h3> -->
-
-<!-- 
-
-<h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3>
-<div class="page-controls">
+<h1>{{ comicCtrl.comic.title }}</h1>
+<div>
+    <span>Issue: {{ comicCtrl.comic.issue }}</span>
+    <span>Page: {{ comicCtrl.comic.page_number }}</span>  
+</div>
+<!-- <h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3>
+ --><div class="page-controls">
     <span class="page-controls-first">
         <a href="#">
             <i class="fa fa-step-backward" aria-hidden="true"></i>        
@@ -34,7 +29,7 @@
 </div>
 
 <div>
-    <img src="{{ comicCtrl.comics[0].image }}" alt="{{ comicCtrl.comics[0].title }}" class="img-responsive">
+    <img src="{{ comicCtrl.comic.image }}" alt="{{ comicCtrl.comic.title }}" class="img-responsive">
 </div>
 
 

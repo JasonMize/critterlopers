@@ -27,19 +27,30 @@ class IssueViewSet(viewsets.ModelViewSet):
 
 class IssueComicViewSet(viewsets.ViewSet):
     def list(self, request, issueId):
-        print('ISSUEID PAGENUMB LIST: ', issueId)
         queryset = Comic.objects.filter(issue_id=issueId)
         serializer = ComicSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, issueId, pageNumber):
-        print('ISSUEID PAGENUMB RETRIEVE: ', issueId, pageNumber)
-        queryset = Comic.objects.all()
+    def retrieve(self, request, issueId, pageNumber, navigation=None):
+        sortOrder = Comic.sortOrder(issueId, pageNumber)
+        print('SORT ORDER: ', sortOrder)
+        if navigation == 'prev':
+            queryset = Comic.objects.order_by('-sort_number').filter(sort_number__lt=sortOrder)[:1]
+        elif navigation == 'next':
+            queryset = Comic.objects.order_by('sort_number').filter(sort_number__gt=sortOrder)[:1]
+        elif navigation == 'last':
+            queryset = Comic.objects.order_by('-sort_number').all()[:1]
+        elif navigation == 'first':
+            queryset = Comic.objects.order_by('sort_number').all()[:1]
+        else:
+            queryset = Comic.objects.filter(
+                issue_id=issueId, 
+                page_number=pageNumber).all()
+
         comic = get_object_or_404(
             queryset, 
-            issue_id=issueId, 
-            page_number=pageNumber
         )
         serializer = ComicSerializer(comic)
         return Response(serializer.data)
+
 
