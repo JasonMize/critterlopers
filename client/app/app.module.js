@@ -17,21 +17,6 @@ const AppModule = angular.module('app', [
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-        .state('index', {
-            url: '/{issueId}/{pageNumber}',
-            component: 'comicPage',
-            resolve: {
-                comic(comicAPIService, $stateParams) {
-                    return comicAPIService
-                        .getComic($stateParams.issueId, $stateParams.pageNumber);
-                },
-                issue(comicAPIService, $stateParams) {
-                    return comicAPIService
-                        .getIssue($stateParams.issueId);
-                },
-            },
-        })
-
         .state('aboutPage', {
             url: '/about',
             component: 'aboutPage',
@@ -40,6 +25,27 @@ const AppModule = angular.module('app', [
         .state('archivePage', {
             url: '/archive',
             component: 'archivePage',
+        })
+
+        .state('index', {
+            url: '/{issueId: [0-9]+}/{pageNumber: [0-9]+}/{navigation}',
+            component: 'comicPage',
+            params: {
+                navigation: { squash: true, value: null },
+            },
+            resolve: {
+                comic(comicAPIService, $stateParams) {
+                    return comicAPIService
+                        .getComic($stateParams.issueId,
+                            $stateParams.pageNumber,
+                            $stateParams.navigation
+                        );
+                },
+                issue(comicAPIService, $stateParams) {
+                    return comicAPIService
+                        .getIssue($stateParams.issueId);
+                },
+            },
         });
     })
 

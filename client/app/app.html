@@ -6,7 +6,11 @@
                 <div class="header-all">
 
                     <div class="header-image">
-                        <a ui-sref="index">
+                        <!-- <a ui-sref="index"> -->
+                        <a ui-sref="index({issueId: 1,
+                            pageNumber: 1, 
+                            navigation:'last' })"
+                        >
                             <img ng-src="{{ appCtrl.randomHeaderImage.image }}" class="img-responsive" alt="Critterlopers">
                         </a>
                     </div>

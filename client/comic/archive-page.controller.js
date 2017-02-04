@@ -4,8 +4,12 @@ function ArchivePageController(comicAPIService) {
 
 
     function getAllComics() {
+        console.log('GET ALL COMICS CALLED');
         return comicAPIService.comic.get().$promise.then((data) => {
             ctrl.comics = data.results;
+            console.log('ALL COMICS ARCHIVE: ', ctrl.comics);
+        }, (error) => {
+            console.log('ERROR: ', error);
         });
     }
 

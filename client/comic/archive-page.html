@@ -1,6 +1,7 @@
 <h1>ARCHIVE</h1>
 <div ng-repeat='comic in archCtrl.comics'>
-    <a ui-sref="index({issueId: comic.issue, pageNumber: comic.page_number })">
+
+    <a ui-sref="index({ issueId: comic.issue, pageNumber: comic.page_number })">
         {{ comic.title }}
     </a>
 </div>

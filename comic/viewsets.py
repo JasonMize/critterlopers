@@ -38,10 +38,10 @@ class IssueComicViewSet(viewsets.ViewSet):
             queryset = Comic.objects.order_by('-sort_number').filter(sort_number__lt=sortOrder)[:1]
         elif navigation == 'next':
             queryset = Comic.objects.order_by('sort_number').filter(sort_number__gt=sortOrder)[:1]
-        elif navigation == 'last':
-            queryset = Comic.objects.order_by('-sort_number').all()[:1]
         elif navigation == 'first':
             queryset = Comic.objects.order_by('sort_number').all()[:1]
+        elif navigation == 'last':
+            queryset = Comic.objects.order_by('-sort_number').all()[:1]
         else:
             queryset = Comic.objects.filter(
                 issue_id=issueId, 

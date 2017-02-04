@@ -45,7 +45,7 @@ class Comic(models.Model):
         
 
     def save(self, *args, **kwargs):
-        self.sort_number = self.issue * self.MAX_PAGES_PER_ISSUE + self.page_number
+        self.sort_number = Comic.sortOrder(self.issue, self.page_number)
         super(Comic, self).save(*args, **kwargs) # Call the "real" save() method.
 
 

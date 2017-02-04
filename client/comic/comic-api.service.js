@@ -6,12 +6,12 @@ function comicAPIService($resource) {
                 return data;
             });
         },
-        getComic(issueId, pageNumber) {
-            return this.issuePage.get({ issueId, pageNumber }).$promise.then((data) => {
+        getComic(issueId, pageNumber, navigation = '') {
+            return this.issuePage.get({ issueId, pageNumber, navigation }).$promise.then((data) => {
+                console.log('COMIC API DATA: ', data);
                 return data;
             });
         },
-        // TODO: just like issuePage but with 3rd argument, navigation
 
         headerimage: $resource('/api/headerimage/:id/',
             { id: '@id' },
@@ -19,10 +19,11 @@ function comicAPIService($resource) {
         comic: $resource('/api/comic/:id',
             { id: '@id' },
         ),
-        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber/',
+        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber/:navigation',
             {
                 issueId: '@issueId',
                 pageNumber: '@pageNumber',
+                navigation: '@navigation',
             }
         ),
         cast: $resource('/api/cast/:id',
