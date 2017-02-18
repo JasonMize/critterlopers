@@ -5,6 +5,7 @@ import comicAPIService from './comic-api.service';
 import comicPageComponent from './comic-page.component';
 import aboutPageComponent from './about-page.component';
 import archivePageComponent from './archive-page.component';
+import castPageComponent from './cast-page.component';
 
 const ComicModule = angular.module('comic', [
     angularResource,
@@ -16,6 +17,8 @@ const ComicModule = angular.module('comic', [
     .factory('comicAPIService', comicAPIService)
     .component('comicPage', comicPageComponent)
     .component('aboutPage', aboutPageComponent)
-    .component('archivePage', archivePageComponent);
+    .component('archivePage', archivePageComponent)
+    .component('castPage', castPageComponent)
+    ;
 
 export default ComicModule;

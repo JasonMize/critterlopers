@@ -27,6 +27,11 @@ const AppModule = angular.module('app', [
             component: 'archivePage',
         })
 
+        .state('castPage', {
+            url: '/cast',
+            component: 'castPage',
+        })
+
         .state('index', {
             url: '/{issueId: [0-9]+}/{pageNumber: [0-9]+}/{navigation}',
             component: 'comicPage',

@@ -44,5 +44,17 @@
     <img src="{{ comicCtrl.comic.image }}" alt="{{ comicCtrl.comic.title }}" class="img-responsive">
 </div>
 
+<div ng-if="comicCtrl.comic.cast_members.length">
+    <div>Starring: </div>
+    <div ng-repeat='member in comicCtrl.comic.cast_members'>
+        <span>
+            <img ng-src="{{ member.image }}" alt="{{ member.name }}" />
+        </span>
+        <span>{{ member.name }}: </span>
+        <span>
+            {{ member.description }}
+        </span>
+    </div>
+</div>
 
 

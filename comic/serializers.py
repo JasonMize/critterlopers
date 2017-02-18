@@ -3,9 +3,20 @@ from rest_framework import serializers
 from .models import *
 
 
+class CastSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cast
+        fields = (
+            'id',
+            'name',
+            'image',
+            'description',
+            'comics',
+        )
+
 class ComicSerializer(serializers.ModelSerializer):
-    
-    
+    cast_members = CastSerializer(many=True, read_only=True)
+
     class Meta:
         model = Comic
         fields = (
@@ -16,16 +27,6 @@ class ComicSerializer(serializers.ModelSerializer):
             'image',
             'date_added',
             'cast_members',
-        )
-
-class CastSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cast
-        fields = (
-            'id',
-            'name',
-            'image',
-            'comics',
         )
 
 class IssueSerializer(serializers.ModelSerializer):
