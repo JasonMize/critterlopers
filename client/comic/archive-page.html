@@ -2,6 +2,10 @@
 <div ng-repeat='comic in archCtrl.comics'>
 
     <a ui-sref="index({ issueId: comic.issue, pageNumber: comic.page_number })">
-        {{ comic.title }}
+        <div>
+            <span>{{ comic.issue }}</span>
+            <span>{{ comic.page_number }}</span>
+            <span>{{ comic.title }}</span>
+        </div>
     </a>
 </div>

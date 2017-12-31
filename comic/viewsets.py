@@ -33,7 +33,7 @@ class IssueComicViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, issueId, pageNumber, navigation=None):
         sortOrder = Comic.sortOrder(issueId, pageNumber)
-        print('SORT ORDER: ', sortOrder)
+        # print('SORT ORDER: ', sortOrder)
         if navigation == 'prev':
             queryset = Comic.objects.order_by('-sort_number').filter(sort_number__lt=sortOrder)[:1]
         elif navigation == 'next':

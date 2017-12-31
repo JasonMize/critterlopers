@@ -1,13 +1,12 @@
 
 function ArchivePageController(comicAPIService) {
-    const ctrl = this;
-
+    const archCtrl = this;
 
     function getAllComics() {
-        console.log('GET ALL COMICS CALLED');
+        // console.log('GET ALL COMICS CALLED');
         return comicAPIService.comic.get().$promise.then((data) => {
-            ctrl.comics = data.results;
-            console.log('ALL COMICS ARCHIVE: ', ctrl.comics);
+            archCtrl.comics = data.results;
+            console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
         }, (error) => {
             console.log('ERROR: ', error);
         });

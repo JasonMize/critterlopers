@@ -14,11 +14,11 @@ const ComicModule = angular.module('comic', [
         // eslint-disable-next-line no-param-reassign
         $resourceProvider.defaults.stripTrailingSlashes = false;
     })
-    .factory('comicAPIService', comicAPIService)
-    .component('comicPage', comicPageComponent)
-    .component('aboutPage', aboutPageComponent)
-    .component('archivePage', archivePageComponent)
-    .component('castPage', castPageComponent)
+        .factory('comicAPIService', comicAPIService)
+        .component('comicPage', comicPageComponent)
+        .component('aboutPage', aboutPageComponent)
+        .component('archivePage', archivePageComponent)
+        .component('castPage', castPageComponent)
     ;
 
 export default ComicModule;

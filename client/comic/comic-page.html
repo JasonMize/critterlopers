@@ -4,8 +4,9 @@
     <span>Issue: {{ comicCtrl.comic.issue }}</span>
     <span>Page: {{ comicCtrl.comic.page_number }}</span>  
 </div>
-<!-- <h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3>
- --><div class="page-controls">
+<!-- <h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3> -->
+
+<div class="page-controls">
     <span class="page-controls-first">
         <a ui-sref="index({issueId: comicCtrl.comic.issue,
             pageNumber: comicCtrl.comic.page_number, 
@@ -43,7 +44,7 @@
 <div>
     <img src="{{ comicCtrl.comic.image }}" alt="{{ comicCtrl.comic.title }}" class="img-responsive">
 </div>
-
+<!-- 
 <div ng-if="comicCtrl.comic.cast_members.length">
     <div>Starring: </div>
     <div ng-repeat='member in comicCtrl.comic.cast_members'>
@@ -55,6 +56,6 @@
             {{ member.description }}
         </span>
     </div>
-</div>
+</div> -->
 
 

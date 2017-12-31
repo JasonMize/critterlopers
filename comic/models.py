@@ -41,11 +41,15 @@ class Comic(models.Model):
 
     @staticmethod
     def sortOrder(issue, page_number):
-        return int(issue) * Comic.MAX_PAGES_PER_ISSUE + int(page_number)
-        
+        issue_num = int(issue)
+        # print('ISSUE NUM: ', issue_num)
+        order = issue_num * Comic.MAX_PAGES_PER_ISSUE + int(page_number) 
+        # print ('SORT ORDER: ', order)
+        return order
 
     def save(self, *args, **kwargs):
-        self.sort_number = Comic.sortOrder(self.issue, self.page_number)
+        self.sort_number = Comic.sortOrder(int(self.issue.issue_number), self.page_number)
+        # print('SORT NUMBER: ', sort_number)
         super(Comic, self).save(*args, **kwargs) # Call the "real" save() method.
 
 
@@ -56,4 +60,3 @@ class HeaderImage(models.Model):
     def __str__(self):
         return self.title    
 
-        
