@@ -8,3 +8,10 @@ npm-debug.log
 
 static/bundle.js
 static/bundle.js.map
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.env.json
