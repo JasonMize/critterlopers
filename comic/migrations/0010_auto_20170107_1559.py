@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('issue_number', models.IntegerField(blank=True, null=True)),
             ],
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='comic',
             name='issue',
             field=models.ForeignKey(null=True, to='comic.Issue', blank=True),
