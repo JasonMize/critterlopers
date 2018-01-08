@@ -10,11 +10,6 @@ class Migration(migrations.Migration):
         ('comic', '0009_auto_20170107_1529'),
     ]
     operations = [
-        migrations.AlterField(
-            model_name='comic',
-            name='page_number',
-            field=models.IntegerField(null=True, blank=True),
-        ),
         migrations.CreateModel(
             name='Issue',
             fields=[

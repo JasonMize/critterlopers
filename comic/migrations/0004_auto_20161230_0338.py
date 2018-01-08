@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comic',
             name='page_number',
-            field=models.CharField(blank=True, max_length=30, null=True),
+            field=models.IntegerField(null=True, blank=True),
         ),
         migrations.AlterField(
             model_name='cast',
