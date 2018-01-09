@@ -10,7 +10,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = BASE_DIR.child("media")
 MEDIA_URL = '/media/'
 
-SUPER_USER_PASS = os.environg['SUPER_USER_PASS']
+SUPER_USER_PASS = os.environ['SUPER_USER_PASS']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
