@@ -20,9 +20,9 @@ ALLOWED_HOSTS = ['*']
 
 DEBUG = False
 
-INSTALLED_APPS += [
+# INSTALLED_APPS += [
     # 'storages'
-]
+# ]
 
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
