@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['*']
 DEBUG = False
 
 INSTALLED_APPS += [
-    'storages',
+    'storages'
 ]
 
 
