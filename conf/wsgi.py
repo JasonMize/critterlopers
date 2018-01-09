@@ -14,7 +14,6 @@ from django.core.wsgi import get_wsgi_application
 from conf.setup_env import setup_env
 
 setup_env()
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "conf.settings.local")
 
 application = get_wsgi_application()
