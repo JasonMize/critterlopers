@@ -22,6 +22,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='comic',
             name='issue',
-            field=models.ForeignKey(null=True, to='comic.Issue', blank=True),
+            field=models.ForeignKey(null=True, to='comic.Issue', blank=True, on_delete=models.DO_NOTHING),
         ),
     ]

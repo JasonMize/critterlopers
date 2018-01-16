@@ -25,7 +25,7 @@ class Comic(models.Model):
     sort_number = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True )
     title = models.CharField(max_length=200, blank=True, null=True)
-    issue = models.ForeignKey(Issue, blank=True, null=True)
+    issue = models.ForeignKey(Issue, blank=True, null=True, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='comics', blank=True, null=True)
     date_added = models.DateTimeField(
         help_text="Posted on: ",
