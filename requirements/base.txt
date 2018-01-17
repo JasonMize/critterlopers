@@ -1,4 +1,4 @@
-Django>=2
+Django==1.11
 Unipath==1.1
 djangorestframework>=3.4.7
 Markdown==2.6.11
