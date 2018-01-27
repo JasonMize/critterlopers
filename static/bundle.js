@@ -42732,7 +42732,7 @@
 	            var navigation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 	
 	            return this.issuePage.query({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
-	                console.log('COMIC API DATA: ', data);
+	                // console.log('COMIC API DATA: ', data);
 	                return data;
 	            });
 	        },
@@ -42792,7 +42792,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -42804,7 +42804,7 @@
 	    function getComic() {
 	        return comicAPIService.getComic($stateParams.issueId, $stateParams.pageNumber, $stateParams.navigation).then(function (data) {
 	            ctrl.comic = data;
-	            console.log('COMIC: ', ctrl.comic);
+	            // console.log('COMIC: ', ctrl.comic);
 	        });
 	    }
 	
@@ -42917,9 +42917,9 @@
 	        // console.log('GET ALL COMICS CALLED');
 	        return comicAPIService.comic.query().$promise.then(function (data) {
 	            archCtrl.comics = data;
-	            console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
+	            // console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
 	        }, function (error) {
-	            console.log('ERROR: ', error);
+	            console.log('ARCHIVE PAGE CONTROLLER: GET ALL COMICS: ERROR: ', error);
 	        });
 	    }
 	

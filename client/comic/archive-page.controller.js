@@ -6,9 +6,9 @@ function ArchivePageController(comicAPIService) {
         // console.log('GET ALL COMICS CALLED');
         return comicAPIService.comic.query().$promise.then((data) => {
             archCtrl.comics = data;
-            console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
+            // console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
         }, (error) => {
-            console.log('ERROR: ', error);
+            console.log('ARCHIVE PAGE CONTROLLER: GET ALL COMICS: ERROR: ', error);
         });
     }
 

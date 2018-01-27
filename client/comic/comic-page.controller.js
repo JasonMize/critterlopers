@@ -10,7 +10,7 @@ function ComicPageController(comicAPIService, $stateParams) {
         )
         .then((data) => {
             ctrl.comic = data;
-            console.log('COMIC: ', ctrl.comic);
+            // console.log('COMIC: ', ctrl.comic);
         });
     }
 
