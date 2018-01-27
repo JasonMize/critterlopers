@@ -42731,8 +42731,8 @@
 	        getComic: function getComic(issueId, pageNumber) {
 	            var navigation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 	
-	            return this.issuePage.get({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
-	                // console.log('COMIC API DATA: ', data);
+	            return this.issuePage.query({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
+	                console.log('COMIC API DATA: ', data);
 	                return data;
 	            });
 	        },
@@ -42915,8 +42915,8 @@
 	
 	    function getAllComics() {
 	        // console.log('GET ALL COMICS CALLED');
-	        return comicAPIService.comic.get().$promise.then(function (data) {
-	            archCtrl.comics = data.results;
+	        return comicAPIService.comic.query().$promise.then(function (data) {
+	            archCtrl.comics = data;
 	            console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
 	        }, function (error) {
 	            console.log('ERROR: ', error);
@@ -43036,7 +43036,7 @@
 /* 25 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -43053,17 +43053,18 @@
 	    }
 	    // get all HeaderImages
 	    function getHeaderImage() {
-	        return comicAPIService.headerimage.get().$promise.then(function (data) {
-	            ctrl.headerImageList = data.results;
+	        return comicAPIService.headerimage.query().$promise.then(function (data) {
+	            ctrl.headerImageList = data;
 	
 	            randomHeaderImage();
+	        }).catch(function (error) {
+	            console.log('APP CONTROLLER: GET HEADER IMAGE: ERROR: ', error);
 	        });
 	    }
 	
 	    function init() {
 	        getHeaderImage();
 	    }
-	
 	    init();
 	}
 	

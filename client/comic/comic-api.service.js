@@ -7,8 +7,8 @@ function comicAPIService($resource) {
             });
         },
         getComic(issueId, pageNumber, navigation = '') {
-            return this.issuePage.get({ issueId, pageNumber, navigation }).$promise.then((data) => {
-                // console.log('COMIC API DATA: ', data);
+            return this.issuePage.query({ issueId, pageNumber, navigation }).$promise.then((data) => {
+                console.log('COMIC API DATA: ', data);
                 return data;
             });
         },

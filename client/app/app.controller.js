@@ -10,17 +10,19 @@ function AppController(comicAPIService) {
     }
     // get all HeaderImages
     function getHeaderImage() {
-        return comicAPIService.headerimage.get().$promise.then((data) => {
-            ctrl.headerImageList = data.results;
+        return comicAPIService.headerimage.query().$promise.then((data) => {
+            ctrl.headerImageList = data;
 
             randomHeaderImage();
+
+        }).catch(function(error) {
+            console.log('APP CONTROLLER: GET HEADER IMAGE: ERROR: ', error);
         });
     }
 
     function init() {
         getHeaderImage();
     }
-
     init();
 }
 
