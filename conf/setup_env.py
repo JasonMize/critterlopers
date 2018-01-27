@@ -3,8 +3,9 @@ import json
 
 from unipath import Path
 
+
 def setup_env():
-    env = Path(__file__).ancestor(3).child('.env.json')
+    env = Path(__file__).ancestor(2).child('.env.json')
     if env.isfile():
         with open(env) as data_file:
             env_variables = json.load(data_file)

@@ -17,4 +17,7 @@ critterenv/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+.env
 .env.json
+.env_local.json
+.env_production.json
