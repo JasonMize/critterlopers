@@ -42731,7 +42731,7 @@
 	        getComic: function getComic(issueId, pageNumber) {
 	            var navigation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 	
-	            return this.issuePage.query({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
+	            return this.issuePage.get({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
 	                // console.log('COMIC API DATA: ', data);
 	                return data;
 	            });
