@@ -114,4 +114,3 @@ STATIC_URL = '/static/'
 
 # password for createsuperuser
 # USER_PASS = os.environ['USER_PASS']
-
