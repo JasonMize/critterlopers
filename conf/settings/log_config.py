@@ -1,6 +1,6 @@
 
 
-DEBUG_LOG_DIR = "/var/log/app-logs"
+DEBUG_LOG_DIR = "/var/log/app-logs/"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -20,7 +20,7 @@ LOGGING = {
         'log_file': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': DEBUG_LOG_DIR,
+            'filename': DEBUG_LOG_DIR + "django.log",
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'standard',
