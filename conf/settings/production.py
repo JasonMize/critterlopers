@@ -2,6 +2,8 @@ from .base import *
 
 import dj_database_url
 
+from log_config import LOGGING
+
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
@@ -39,6 +41,7 @@ MEDIA_URL = 'https://%s/media/' % AWS_S3_CUSTOM_DOMAIN
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'conf.settings.storage_backends.MediaStorage'
+
 
 
 
