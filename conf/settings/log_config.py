@@ -1,7 +1,6 @@
-from .base import BASE_DIR
 
 
-DEBUG_LOG_DIR = BASE_DIR + "opt/python/log/django_logs.log"
+DEBUG_LOG_DIR = "/var/log/app-logs"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
