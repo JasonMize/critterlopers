@@ -1,4 +1,4 @@
-from base import BASE_DIR
+from .base import BASE_DIR
 
 
 DEBUG_LOG_DIR = BASE_DIR + "opt/python/log/django_logs.log"
