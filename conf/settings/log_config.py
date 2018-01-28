@@ -30,22 +30,22 @@ LOGGING = {
     # Loggers (where does the log come from)
     'loggers': {
         'repackager': {
-            'handlers': ['console', 'log_file'],
+            'handlers': ['log_file'],
             'level': 'DEBUG',
             'propagate': True,
         },
         'django': {
-            'handlers':['console'],
+            'handlers':['log_file'],
             'propagate': True,
             'level':'WARN',
         },
         'django.db.backends': {
-            'handlers': ['console', 'log_file'],
+            'handlers': ['log_file'],
             'level': 'WARN',
             'propagate': False,
         },
         '': {
-            'handlers': ['console', 'log_file'],
+            'handlers': ['log_file'],
             'level': 'DEBUG',
         }
     }
