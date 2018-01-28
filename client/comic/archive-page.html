@@ -1,11 +1,17 @@
-<h1>ARCHIVE</h1>
-<div ng-repeat='comic in archCtrl.comics'>
-
-    <a ui-sref="index({ issueId: comic.issue, pageNumber: comic.page_number })">
-        <div>
-            <span>{{ comic.issue }}</span>
-            <span>{{ comic.page_number }}</span>
-            <span>{{ comic.title }}</span>
-        </div>
-    </a>
+<div class="archive">
+  <h1>ARCHIVE</h1>
+  <div class="row">
+    <div>
+      <span class="col-xs-2 col-sm-1">Issue</span>
+      <span class="col-xs-2 col-sm-1">Page</span>
+      <span class="col-xs-8 col-sm-10">Title</span>
+    </div>
+    <div ng-repeat='comic in archCtrl.comics'>
+      <a class="angular-a" ui-sref="index({ issueId: comic.issue, pageNumber: comic.page_number })">
+        <span class="col-xs-2 col-sm-1">{{ comic.issue }}</span>
+        <span class="col-xs-2 col-sm-1">{{ comic.page_number }}</span>
+        <span class="col-xs-8 col-sm-10">{{ comic.title }}</span>
+      </a>
+    </div>
+  </div>
 </div>
