@@ -2,7 +2,7 @@ from .base import *
 
 import dj_database_url
 
-from log_config import LOGGING
+from .log_config import LOGGING
 
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
