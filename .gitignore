@@ -12,6 +12,8 @@ static/bundle.js.map
 docker-logs/
 critterenv/
 
+media/
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
