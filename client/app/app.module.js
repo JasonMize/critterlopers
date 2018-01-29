@@ -13,9 +13,9 @@ const AppModule = angular.module('app', [
 ])
     .component('app', appComponent)
 
-    .config(($stateProvider, $urlRouterProvider) => {
+    .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
         $urlRouterProvider.otherwise('/');
-
+        $locationProvider.html5Mode(true);
         $stateProvider
         .state('aboutPage', {
             url: '/about',

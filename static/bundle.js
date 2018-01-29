@@ -80,9 +80,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider) {
+	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	    $urlRouterProvider.otherwise('/');
-	
+	    $locationProvider.html5Mode(true);
 	    $stateProvider.state('aboutPage', {
 	        url: '/about',
 	        component: 'aboutPage'
