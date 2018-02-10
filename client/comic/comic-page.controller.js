@@ -1,16 +1,16 @@
 
 function ComicPageController(comicAPIService, $stateParams) {
+    console.log('COMIC PAGE CONTROLLER: $stateParams: ', $stateParams);
     const ctrl = this;
 
     function getComic() {
         return comicAPIService.getComic(
-            $stateParams.issueId,
             $stateParams.pageNumber,
             $stateParams.navigation
         )
         .then((data) => {
             ctrl.comic = data;
-            // console.log('COMIC: ', ctrl.comic);
+            console.log('COMIC: ', ctrl.comic);
         });
     }
 

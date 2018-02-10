@@ -5,7 +5,7 @@ from comic.viewsets import *
 
 router = routers.DefaultRouter()
 router.register(r'comic', ComicViewSet)
-router.register(r'cast', CastViewSet)
+# router.register(r'cast', CastViewSet)
 router.register(r'headerimage', HeaderImageViewSet)
 router.register(r'issue', IssueViewSet)
 

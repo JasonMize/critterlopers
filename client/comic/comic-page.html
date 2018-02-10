@@ -8,33 +8,41 @@
 
 <div class="page-controls">
     <span class="page-controls-first">
-        <a ui-sref="index({issueId: comicCtrl.comic.issue,
-            pageNumber: comicCtrl.comic.page_number, 
-            navigation:'first' })"
+        <a ui-sref="index(
+            {
+                pageNumber: comicCtrl.comic.page_number, 
+                navigation:'first' 
+            })"
         >
             <i class="fa fa-step-backward" aria-hidden="true"></i>        
         </a>
     </span>
     <span class="page-controls-previous">
-        <a ui-sref="index({issueId: comicCtrl.comic.issue,
-            pageNumber: comicCtrl.comic.page_number, 
-            navigation:'prev' })"
+        <a ui-sref="index(
+            {
+                pageNumber: comicCtrl.comic.page_number, 
+                navigation:'prev' 
+            })"
         >
             <i class="fa fa-caret-left" aria-hidden="true"></i>
         </a>
     </span>
     <span class="page-controls-next">
-        <a ui-sref="index({issueId: comicCtrl.comic.issue,
-            pageNumber: comicCtrl.comic.page_number, 
-            navigation:'next' })"
+        <a ui-sref="index(
+            {
+                pageNumber: comicCtrl.comic.page_number, 
+                navigation:'next' 
+            })"
         >
             <i class="fa fa-caret-right" aria-hidden="true"></i>
         </a>
     </span>
     <span class="page-controls-last">
-        <a ui-sref="index({issueId: comicCtrl.comic.issue,
-            pageNumber: comicCtrl.comic.page_number, 
-            navigation:'last' })"
+        <a ui-sref="index(
+            {
+                pageNumber: comicCtrl.comic.page_number, 
+                navigation:'last' 
+            })"
         >
             <i class="fa fa-step-forward" aria-hidden="true"></i>
         </a>

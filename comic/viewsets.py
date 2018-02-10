@@ -5,6 +5,7 @@ from .models import *
 from .serializers import *
 
 class ComicViewSet(viewsets.ModelViewSet):
+    print('VIEWSETS: COMIC VIEW SET: ')
     queryset = Comic.objects.order_by(
         '-sort_number', 
         '-issue', 
@@ -13,9 +14,9 @@ class ComicViewSet(viewsets.ModelViewSet):
     ).all()
     serializer_class = ComicSerializer
 
-class CastViewSet(viewsets.ModelViewSet):
-    queryset = Cast.objects.all()
-    serializer_class = CastSerializer
+# class CastViewSet(viewsets.ModelViewSet):
+#     queryset = Cast.objects.all()
+#     serializer_class = CastSerializer
 
 class HeaderImageViewSet(viewsets.ModelViewSet):
     queryset = HeaderImage.objects.all()

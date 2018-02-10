@@ -80,9 +80,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider) {
+	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	    $urlRouterProvider.otherwise('/');
-	
+	    $locationProvider.html5Mode(true);
 	    $stateProvider.state('aboutPage', {
 	        url: '/about',
 	        component: 'aboutPage'
@@ -93,17 +93,14 @@
 	        url: '/cast',
 	        component: 'castPage'
 	    }).state('index', {
-	        url: '/{issueId: [0-9]+}/{pageNumber: [0-9]+}/{navigation}',
+	        url: '/comic/{pageNumber: [0-9]+}',
 	        component: 'comicPage',
 	        params: {
 	            navigation: { squash: true, value: null }
 	        },
 	        resolve: {
 	            comic: function comic(comicAPIService, $stateParams) {
-	                return comicAPIService.getComic($stateParams.issueId, $stateParams.pageNumber, $stateParams.navigation);
-	            },
-	            issue: function issue(comicAPIService, $stateParams) {
-	                return comicAPIService.getIssue($stateParams.issueId);
+	                return comicAPIService.getComic($stateParams.pageNumber, $stateParams.navigation);
 	            }
 	        }
 	    });
@@ -42723,15 +42720,15 @@
 	
 	function comicAPIService($resource) {
 	    var api = {
-	        getIssue: function getIssue(id) {
-	            return this.issue.get({ id: id }).$promise.then(function (data) {
-	                return data;
-	            });
-	        },
-	        getComic: function getComic(issueId, pageNumber) {
-	            var navigation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+	        // getIssue(id) {
+	        // return this.issue.get({ id }).$promise.then((data) => {
+	        // return data;
+	        // });
+	        // },
+	        getComic: function getComic(pageNumber) {
+	            var navigation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 	
-	            return this.issuePage.get({ issueId: issueId, pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
+	            return this.issuePage.get({ pageNumber: pageNumber, navigation: navigation }).$promise.then(function (data) {
 	                console.log('COMIC API DATA: ', data);
 	                return data;
 	            });
@@ -42739,14 +42736,7 @@
 	
 	
 	        headerimage: $resource('/api/headerimage/:id/', { id: '@id' }),
-	        comic: $resource('/api/comic/:id', { id: '@id' }),
-	        issuePage: $resource('/api/issue/:issueId/comic/:pageNumber/:navigation', {
-	            issueId: '@issueId',
-	            pageNumber: '@pageNumber',
-	            navigation: '@navigation'
-	        }),
-	        cast: $resource('/api/cast/:id', { id: '@id' }),
-	        issue: $resource('/api/issue/:id', { id: '@id' })
+	        comic: $resource('/api/comic/:id', { id: '@id' })
 	    };
 	
 	    return api;
@@ -42786,7 +42776,7 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n<h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3>\n\n<div class=\"page-controls\">\n    <span class=\"page-controls-first\">\n        <a ui-sref=\"index({issueId: comicCtrl.comic.issue,\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'first' })\"\n        >\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>        \n        </a>\n    </span>\n    <span class=\"page-controls-previous\">\n        <a ui-sref=\"index({issueId: comicCtrl.comic.issue,\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'prev' })\"\n        >\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-next\">\n        <a ui-sref=\"index({issueId: comicCtrl.comic.issue,\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'next' })\"\n        >\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-last\">\n        <a ui-sref=\"index({issueId: comicCtrl.comic.issue,\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'last' })\"\n        >\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n<!-- \n<div ng-if=\"comicCtrl.comic.cast_members.length\">\n    <div>Starring: </div>\n    <div ng-repeat='member in comicCtrl.comic.cast_members'>\n        <span>\n            <img ng-src=\"{{ member.image }}\" alt=\"{{ member.name }}\" />\n        </span>\n        <span>{{ member.name }}: </span>\n        <span>\n            {{ member.description }}\n        </span>\n    </div>\n</div> -->\n\n\n"
+	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n<!-- <h3>Date Added: {{ comicCtrl.comic.date_added | '%Y-%m-%d'}}</h3> -->\n\n<div class=\"page-controls\">\n    <span class=\"page-controls-first\">\n        <a ui-sref=\"index({\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'first' \n            })\"\n        >\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>        \n        </a>\n    </span>\n    <span class=\"page-controls-previous\">\n        <a ui-sref=\"index({\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'prev' \n            })\"\n        >\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-next\">\n        <a ui-sref=\"index({\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'next' \n            })\"\n        >\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-last\">\n        <a ui-sref=\"index({\n            pageNumber: comicCtrl.comic.page_number, \n            navigation:'last' \n            })\"\n        >\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n<!-- \n<div ng-if=\"comicCtrl.comic.cast_members.length\">\n    <div>Starring: </div>\n    <div ng-repeat='member in comicCtrl.comic.cast_members'>\n        <span>\n            <img ng-src=\"{{ member.image }}\" alt=\"{{ member.name }}\" />\n        </span>\n        <span>{{ member.name }}: </span>\n        <span>\n            {{ member.description }}\n        </span>\n    </div>\n</div> -->\n\n\n"
 
 /***/ },
 /* 13 */
@@ -42799,10 +42789,11 @@
 	});
 	
 	function ComicPageController(comicAPIService, $stateParams) {
+	    console.log('COMIC: ', $stateParams);
 	    var ctrl = this;
 	
 	    function getComic() {
-	        return comicAPIService.getComic($stateParams.issueId, $stateParams.pageNumber, $stateParams.navigation).then(function (data) {
+	        return comicAPIService.getComic($stateParams.pageNumber, $stateParams.navigation).then(function (data) {
 	            ctrl.comic = data;
 	            console.log('COMIC: ', ctrl.comic);
 	        });
@@ -42898,7 +42889,7 @@
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>ARCHIVE</h1>\n<div ng-repeat='comic in archCtrl.comics'>\n\n    <a ui-sref=\"index({ issueId: comic.issue, pageNumber: comic.page_number })\">\n        {{ comic.title }}\n    </a>\n</div>\n"
+	module.exports = "<div class=\"archive\">\n  <h1>ARCHIVE</h1>\n  <div class=\"row\">\n    <div>\n      <span class=\"col-xs-2 col-sm-1\">Issue</span>\n      <span class=\"col-xs-2 col-sm-1\">Page</span>\n      <span class=\"col-xs-8 col-sm-10\">Title</span>\n    </div>\n    <div ng-repeat='comic in archCtrl.comics'>\n      <a class=\"angular-a\" ui-sref=\"index({ pageNumber: comic.page_number })\">\n        <span class=\"col-xs-2 col-sm-1\">{{ comic.issue }}</span>\n        <span class=\"col-xs-2 col-sm-1\">{{ comic.page_number }}</span>\n        <span class=\"col-xs-8 col-sm-10\">{{ comic.title }}</span>\n      </a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 19 */
@@ -42911,15 +42902,15 @@
 	});
 	
 	function ArchivePageController(comicAPIService) {
-	    var ctrl = this;
+	    var archCtrl = this;
 	
 	    function getAllComics() {
 	        console.log('GET ALL COMICS CALLED');
-	        return comicAPIService.comic.get().$promise.then(function (data) {
-	            ctrl.comics = data.results;
-	            console.log('ALL COMICS ARCHIVE: ', ctrl.comics);
+	        return comicAPIService.comic.query().$promise.then(function (data) {
+	            archCtrl.comics = data;
+	            console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
 	        }, function (error) {
-	            console.log('ERROR: ', error);
+	            console.log('ARCHIVE PAGE CONTROLLER: GET ALL COMICS: ERROR: ', error);
 	        });
 	    }
 	
@@ -43030,13 +43021,13 @@
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "<header>\n    <nav class=\"navbar navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"row\">\n                \n                <div class=\"header-all\">\n\n                    <div class=\"header-image\">\n                        <!-- <a ui-sref=\"index\"> -->\n                        <a ui-sref=\"index({issueId: 1, pageNumber: 1, navigation:'last' })\">\n                            <img ng-src=\"{{ appCtrl.randomHeaderImage.image }}\" class=\"img-responsive\" alt=\"Critterlopers\">\n                        </a>\n                    </div>\n\n                    <div class=\"header-title\">CRITTERLOPERS</div>\n                    <div class=\"header-byline\">A Story Of Beasts Suburban.</div>\n                    \n                    <div class=\"header-links header-links-top\">\n                        <span>\n                            <a ui-sref=\"index({issueId: 1, pageNumber: 1, navigation:'last' })\">HOME</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"archivePage\">ARCHIVE</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"aboutPage\">ABOUT</a>\n                        </span>\n                        <!-- <span><a ui-sref=\"#\">CAST</a></span> -->\n                        <!-- <span><a ui-sref=\"#\">BLOG</a></span> -->\n                    </div>\n                    <!-- <div class=\"header-links header-links-bottom\"> -->\n                        <!-- <span><a ui-sref=\"#\">SUPPORT</a></span> -->\n                    <!-- </div> -->\n                </div>\n                \n            </div>\n        </div>\n    </nav>\n</header>\n\n<div class=\"container-fluid\">\n\n    <div ui-view></div>\n\n</div>\n\n"
+	module.exports = "<header>\n    <nav class=\"navbar navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"row\">\n                \n                <div class=\"header-all\">\n\n                    <div class=\"header-image\">\n                        <!-- <a ui-sref=\"index\"> -->\n                        <a ui-sref=\"index({pageNumber: 1, navigation:'last' })\">\n                            <img ng-src=\"{{ appCtrl.randomHeaderImage.image }}\" class=\"img-responsive\" alt=\"Critterlopers\">\n                        </a>\n                    </div>\n\n                    <div class=\"header-title\">CRITTERLOPERS</div>\n                    <div class=\"header-byline\">A Story Of Beasts Suburban.</div>\n                    \n                    <div class=\"header-links header-links-top\">\n                        <span>\n                            <a ui-sref=\"index({pageNumber: 1, navigation:'last' })\">HOME</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"archivePage\">ARCHIVE</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"aboutPage\">ABOUT</a>\n                        </span>\n                        <!-- <span><a ui-sref=\"#\">CAST</a></span> -->\n                        <!-- <span><a ui-sref=\"#\">BLOG</a></span> -->\n                    </div>\n                    <!-- <div class=\"header-links header-links-bottom\"> -->\n                        <!-- <span><a ui-sref=\"#\">SUPPORT</a></span> -->\n                    <!-- </div> -->\n                </div>\n                \n            </div>\n        </div>\n    </nav>\n</header>\n\n<div class=\"container-fluid\">\n\n    <div ui-view></div>\n\n</div>\n\n"
 
 /***/ },
 /* 25 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -43053,17 +43044,18 @@
 	    }
 	    // get all HeaderImages
 	    function getHeaderImage() {
-	        return comicAPIService.headerimage.get().$promise.then(function (data) {
-	            ctrl.headerImageList = data.results;
+	        return comicAPIService.headerimage.query().$promise.then(function (data) {
+	            ctrl.headerImageList = data;
 	
 	            randomHeaderImage();
+	        }).catch(function (error) {
+	            console.log('APP CONTROLLER: GET HEADER IMAGE: ERROR: ', error);
 	        });
 	    }
 	
 	    function init() {
 	        getHeaderImage();
 	    }
-	
 	    init();
 	}
 	

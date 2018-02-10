@@ -7,7 +7,7 @@
       <span class="col-xs-8 col-sm-10">Title</span>
     </div>
     <div ng-repeat='comic in archCtrl.comics'>
-      <a class="angular-a" ui-sref="index({ issueId: comic.issue, pageNumber: comic.page_number })">
+      <a class="angular-a" ui-sref="index({ pageNumber: comic.page_number })">
         <span class="col-xs-2 col-sm-1">{{ comic.issue }}</span>
         <span class="col-xs-2 col-sm-1">{{ comic.page_number }}</span>
         <span class="col-xs-8 col-sm-10">{{ comic.title }}</span>

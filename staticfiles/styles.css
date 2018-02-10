@@ -5,6 +5,29 @@ body {
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
 
+a { 
+    color: #2A82F3; 
+    text-decoration: underline;
+}
+a:hover { 
+    color: #2369C3;
+    background-color: #F3F8FF;
+}
+a:visited {
+    color: #2A82F3; 
+}
+.angular-a span{ 
+    color: #2A82F3; 
+}
+.angular-a span:hover { 
+    color: #2369C3;
+    background-color: #F3F8FF;
+}
+.angular-a span:visited {
+    color: #2A82F3; 
+}
+
+
 
 /*****************************************************/
 /*    HEADER    */
@@ -58,6 +81,13 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Baloo Thambi', cursive; }
     font-size: 5em;
     margin-right: 10vw;
 }
+
+
+/*****************************************************/
+/*    ARCHIVE PAGE    */
+/*****************************************************/
+
+
 
 
 
