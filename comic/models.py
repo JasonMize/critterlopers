@@ -40,16 +40,12 @@ class Comic(models.Model):
         return self.title
 
     @staticmethod
-    def sortOrder(issue, page_number):
-        issue_num = int(issue)
-        # print('ISSUE NUM: ', issue_num)
-        order = issue_num * Comic.MAX_PAGES_PER_ISSUE + int(page_number) 
-        # print ('SORT ORDER: ', order)
+    def sortOrder(page_number):
+        order = Comic.MAX_PAGES_PER_ISSUE + int(page_number) 
         return order
 
     def save(self, *args, **kwargs):
-        self.sort_number = Comic.sortOrder(int(self.issue.issue_number), self.page_number)
-        # print('SORT NUMBER: ', sort_number)
+        self.sort_number = Comic.sortOrder(self.page_number)
         super(Comic, self).save(*args, **kwargs) # Call the "real" save() method.
 
 

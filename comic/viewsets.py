@@ -27,14 +27,13 @@ class IssueViewSet(viewsets.ModelViewSet):
     serializer_class = IssueSerializer
 
 class IssueComicViewSet(viewsets.ViewSet):
-    def list(self, request, issueId):
-        queryset = Comic.objects.filter(issue_id=issueId)
+    def list(self, request):
+        queryset = Comic.objects.all()
         serializer = ComicSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, issueId, pageNumber, navigation=None):
-        sortOrder = Comic.sortOrder(issueId, pageNumber)
-        # print('SORT ORDER: ', sortOrder)
+    def retrieve(self, request, pageNumber, navigation=None):
+        sortOrder = Comic.sortOrder(pageNumber)
         if navigation == 'prev':
             queryset = Comic.objects.order_by('-sort_number').filter(sort_number__lt=sortOrder)[:1]
         elif navigation == 'next':
@@ -44,14 +43,10 @@ class IssueComicViewSet(viewsets.ViewSet):
         elif navigation == 'last':
             queryset = Comic.objects.order_by('-sort_number').all()[:1]
         else:
-            queryset = Comic.objects.filter(
-                issue_id=issueId, 
-                page_number=pageNumber).all()
+            queryset = Comic.objects.filter(page_number=pageNumber).all()
 
-        comic = get_object_or_404(
-            queryset, 
-        )
-        serializer = ComicSerializer(comic)
+        comics = get_object_or_404(queryset)
+        serializer = ComicSerializer(comics)
         return Response(serializer.data)
 
 

@@ -10,13 +10,13 @@ router.register(r'headerimage', HeaderImageViewSet)
 router.register(r'issue', IssueViewSet)
 
 urlpatterns = [
-    url(r'^issue/(?P<issueId>\d+)/comic/$', 
+    url(r'^comic/$', 
         IssueComicViewSet.as_view({'get': 'list'})
     ),
-    url(r'^issue/(?P<issueId>\d+)/comic/(?P<pageNumber>\d+)/$', 
+    url(r'^comic/(?P<pageNumber>\d+)/$', 
         IssueComicViewSet.as_view({'get': 'retrieve'})
     ),
-    url(r'^issue/(?P<issueId>\d+)/comic/(?P<pageNumber>\d+)/(?P<navigation>prev|next|first|last)$', 
+    url(r'^comic/(?P<pageNumber>\d+)/(?P<navigation>prev|next|first|last)$', 
         IssueComicViewSet.as_view({'get': 'retrieve'})
     ),
     url(r'^', include(router.urls)),
