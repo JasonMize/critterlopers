@@ -22,6 +22,7 @@ class ComicSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'page_number',
+            'last_page',
             'title',
             'issue',
             'image',

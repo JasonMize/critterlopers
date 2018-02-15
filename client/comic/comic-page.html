@@ -10,7 +10,7 @@
     <span class="page-controls-first">
         <a ui-sref="index(
             {
-                pageNumber: comicCtrl.comic.page_number, 
+                pageNumber: 1, 
                 navigation:'first' 
             })"
         >
@@ -40,8 +40,7 @@
     <span class="page-controls-last">
         <a ui-sref="index(
             {
-                pageNumber: comicCtrl.comic.page_number, 
-                navigation:'last' 
+                pageNumber: comicCtrl.comic.last_page, 
             })"
         >
             <i class="fa fa-step-forward" aria-hidden="true"></i>

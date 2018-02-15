@@ -10,6 +10,9 @@ router.register(r'headerimage', HeaderImageViewSet)
 router.register(r'issue', IssueViewSet)
 
 urlpatterns = [
+    url(r'^$',
+        IssueComicViewSet.as_view({'get': 'list'})
+    ),
     url(r'^comic/$', 
         IssueComicViewSet.as_view({'get': 'list'})
     ),
