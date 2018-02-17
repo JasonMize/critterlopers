@@ -4,7 +4,6 @@ import os
 from unipath import Path
 
 
-
 BASE_DIR = Path(__file__).ancestor(3)
 TEMPLATE_DIR = BASE_DIR.child("templates")
 STATIC_FILE_DIR = BASE_DIR.child("static")

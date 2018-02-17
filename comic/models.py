@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from pprint import pprint
 
 class Cast(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
@@ -23,8 +23,8 @@ class Issue(models.Model):
 class Comic(models.Model):
     MAX_PAGES_PER_ISSUE = 1000
     sort_number = models.IntegerField(blank=True, null=True)
-    last_page = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True )
+    last_page = models.IntegerField(default=1)
     title = models.CharField(max_length=200, blank=True, null=True)
     issue = models.ForeignKey(Issue, blank=True, null=True, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='comics', blank=True, null=True)
@@ -52,28 +52,40 @@ class Comic(models.Model):
         # print ('SORT ORDER: ', order)
         return order
 
-    def lastPage(last_page, page_number):
-        comics = Comic.objects.all()
-        for comic in comics: 
-            if comic.last_page is None or comic.last_page < page_number:
-                comic.last_page = page_number
-                print('COMIC: ', comic.last_page)
-                # comic.save()
-        # if page_number > last_page: 
-            # last_page = page_number
-        # return last_page
-
     def save(self, *args, **kwargs):
         self.sort_number = Comic.sortOrder(self.page_number)
-        self.last_page = Comic.lastPage(self.last_page, self.page_number)
-        # print('SORT NUMBER: ', sort_number)
         super(Comic, self).save(*args, **kwargs) # Call the "real" save() method.
+
+
+
+class ComicManager(models.Model):
+    last_page = models.IntegerField(default=1)
+
+    class Meta:
+        verbose_name_plural = ("Comic Manager")
+
+    def __str__(self):
+        return str(self.last_page)
+
+    def save(self, *args, **kwargs):
+        super(ComicManager, self).save(*args, **kwargs)
+        # TODO - automate this so that anytime a comic is saved it checks last page status and runs here
+        # update all Comic instances to have this last page
+        comics = Comic.objects.all()
+        for comic in comics:
+            if comic.last_page < self.last_page:
+                comic.last_page = self.last_page
+                comic.save()
+
 
 
 class HeaderImage(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
 
+    class Meta: 
+        verbose_name_plural = ('Header Images')
+
     def __str__(self):
-        return self.title    
+        return self.title
 

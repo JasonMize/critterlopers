@@ -11,7 +11,6 @@
         <a ui-sref="index(
             {
                 pageNumber: 1, 
-                navigation:'first' 
             })"
         >
             <i class="fa fa-step-backward" aria-hidden="true"></i>        
@@ -20,8 +19,7 @@
     <span class="page-controls-previous">
         <a ui-sref="index(
             {
-                pageNumber: comicCtrl.comic.page_number, 
-                navigation:'prev' 
+                pageNumber: comicCtrl.comic.page_number - 1, 
             })"
         >
             <i class="fa fa-caret-left" aria-hidden="true"></i>
@@ -30,8 +28,7 @@
     <span class="page-controls-next">
         <a ui-sref="index(
             {
-                pageNumber: comicCtrl.comic.page_number, 
-                navigation:'next' 
+                pageNumber: comicCtrl.comic.page_number + 1, 
             })"
         >
             <i class="fa fa-caret-right" aria-hidden="true"></i>
