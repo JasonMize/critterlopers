@@ -19,9 +19,6 @@ urlpatterns = [
     url(r'^comic/(?P<pageNumber>\d+)/$', 
         IssueComicViewSet.as_view({'get': 'retrieve'})
     ),
-    url(r'^comic/(?P<pageNumber>\d+)/(?P<navigation>prev|next|first|last)$', 
-        IssueComicViewSet.as_view({'get': 'retrieve'})
-    ),
     url(r'^', include(router.urls)),
 ]
 

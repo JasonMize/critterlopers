@@ -33,42 +33,13 @@ class IssueComicViewSet(viewsets.ViewSet):
         serializer = ComicSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, pageNumber, navigation=None):
+    def retrieve(self, request, pageNumber):
         sortOrder = Comic.sortOrder(pageNumber)
-        # print('SORT ORDER: ', sortOrder)
-        # print('pageNumber: ', pageNumber)
-        # print('navigation: ', navigation)
-        # print('SELF: ', self)
-        # print('REQUEST: ')
-        # pprint(dir(request))
-        # print('SELF: ')
-        # pprint(dir(self))
-        # print('OPTIONS: ')
-        # pprint(self.options)
+        queryset = Comic.objects.filter(page_number=pageNumber).all()
 
-
-        if navigation == 'prev':
-            comic = Comic.objects.filter(page_number=pageNumber)
-            queryset = Comic.objects.order_by('-sort_number').filter(sort_number__lt=sortOrder)[:1]
-        elif navigation == 'next':
-            queryset = Comic.objects.order_by('sort_number').filter(sort_number__gt=sortOrder)[:1]
-        elif navigation == 'first':
-            queryset = Comic.objects.order_by('sort_number').all()[:1]
-        elif navigation == 'last':
-            queryset = Comic.objects.order_by('-sort_number').all()[:1]
-        else:
-            queryset = Comic.objects.filter(page_number=pageNumber).all()
-
-
-        # print('QUERYSET: ', queryset[0].page_number)
         comics = get_object_or_404(queryset)
         serializer = ComicSerializer(comics)
-        # print('SERIALIZER: ')
-        # pprint(dir(serializer))
-        # print('SERIALIZER DATA: ')
-        # pprint(serializer.data)
-        # if navigation == 'last':
-        #     serializer['page_number'] = queryset[0].page_number
+
         return Response(serializer.data)
 
 

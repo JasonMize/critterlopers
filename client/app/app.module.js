@@ -35,16 +35,12 @@ const AppModule = angular.module('app', [
         .state('index', {
             url: '/comic/{pageNumber: [0-9]+}',
             component: 'comicPage',
-            params: {
-                navigation: { squash: true, value: null },
-            },
             resolve: {
                 comic(comicAPIService, $stateParams) {
                     return comicAPIService
-                        .getComic(
-                            $stateParams.pageNumber,
-                            $stateParams.navigation
-                        );
+                    .getComic(
+                        $stateParams.pageNumber
+                    );
                 },
             },
         });

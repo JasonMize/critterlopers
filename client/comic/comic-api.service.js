@@ -1,35 +1,24 @@
 
 function comicAPIService($resource) {
     const api = {
-        // getIssue(id) {
-            // return this.issue.get({ id }).$promise.then((data) => {
-                // return data;
-            // });
-        // },
-        getComic(pageNumber, navigation = '') {
-            return this.issuePage.get({ pageNumber, navigation }).$promise.then((data) => {
+        getComic(pageNumber = '') {
+            return this.issuePage.get({pageNumber}).$promise.then((data) => {
                 console.log('COMIC API DATA: ', data);
                 return data;
             });
         },
-
         headerimage: $resource('/api/headerimage/:id/',
             { id: '@id' },
         ),
-        comic: $resource('/api/comic/:pageNumber',
+        comic: $resource('/api/comic/:pageNumber/',
             { page_number: '@pageNumber' },
         ),
-        issuePage: $resource('/api/comic/:pageNumber/:navigation',
+        issuePage: $resource('/api/comic/:pageNumber/',
             {
-                // issueId: '@issueId',
-                page_number: '@pageNumber',
-                navigation: '@navigation',
+                page_number: '@pageNumber'
             }
         ),
-        // cast: $resource('/api/cast/:id',
-            // { id: '@id' },
-        // ),
-        // issue: $resource('/api/issue/:id',
+        // cast: $resource('/api/cast/:id/',
             // { id: '@id' },
         // ),
     };

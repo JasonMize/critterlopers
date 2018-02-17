@@ -5,8 +5,7 @@ function ComicPageController(comicAPIService, $stateParams) {
 
     function getComic() {
         return comicAPIService.getComic(
-            $stateParams.pageNumber,
-            $stateParams.navigation
+            $stateParams.pageNumber
         )
         .then((data) => {
             ctrl.comic = data;

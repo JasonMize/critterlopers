@@ -2,6 +2,14 @@
 function AppController(comicAPIService) {
     const ctrl = this;
 
+    function getLastPage() {
+        return comicAPIService.comic.query().$promise.then((data) => {
+            ctrl.comics = data;
+            ctrl.last_page = ctrl.comics[0].last_page;
+            console.log('LAST PAGE: ', ctrl.last_page);
+        });
+    }
+
     // get a random HeaderImage
     function randomHeaderImage() {
         ctrl.maxRange = Math.floor(ctrl.headerImageList.length);
@@ -22,6 +30,7 @@ function AppController(comicAPIService) {
 
     function init() {
         getHeaderImage();
+        getLastPage();
     }
     init();
 }
