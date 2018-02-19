@@ -16,7 +16,6 @@ from .models import *
 
 class ComicSerializer(serializers.ModelSerializer):
     # cast_members = CastSerializer(many=True, read_only=True)
-
     class Meta:
         model = Comic
         fields = (

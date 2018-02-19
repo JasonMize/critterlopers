@@ -74,7 +74,7 @@
 	
 	var _comic2 = _interopRequireDefault(_comic);
 	
-	var _app = __webpack_require__(23);
+	var _app = __webpack_require__(20);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -41831,16 +41831,16 @@
 	
 	var _archivePage2 = _interopRequireDefault(_archivePage);
 	
-	var _castPage = __webpack_require__(20);
-	
-	var _castPage2 = _interopRequireDefault(_castPage);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import castPageComponent from './cast-page.component';
 	
 	var ComicModule = _angular2.default.module('comic', [_angularResource2.default]).config(function ($resourceProvider) {
 	    // eslint-disable-next-line no-param-reassign
 	    $resourceProvider.defaults.stripTrailingSlashes = false;
-	}).factory('comicAPIService', _comicApi2.default).component('comicPage', _comicPage2.default).component('aboutPage', _aboutPage2.default).component('archivePage', _archivePage2.default).component('castPage', _castPage2.default);
+	}).factory('comicAPIService', _comicApi2.default).component('comicPage', _comicPage2.default).component('aboutPage', _aboutPage2.default).component('archivePage', _archivePage2.default)
+	// .component('castPage', castPageComponent)
+	;
 	
 	exports.default = ComicModule;
 
@@ -42928,77 +42928,11 @@
 	    value: true
 	});
 	
-	var _castPage = __webpack_require__(21);
-	
-	var _castPage2 = _interopRequireDefault(_castPage);
-	
-	var _castPage3 = __webpack_require__(22);
-	
-	var _castPage4 = _interopRequireDefault(_castPage3);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var castPageComponent = {
-	    template: _castPage2.default,
-	    controller: _castPage4.default,
-	    controllerAs: 'castCtrl'
-	};
-	
-	exports.default = castPageComponent;
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	module.exports = "<div>CAST PAGE</div>\n\n<div ng-repeat=\"member in castCtrl.cast_members\">\n    <div>{{ member.name }}</div>\n</div>"
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	function CastPageController(comicAPIService) {
-	    var ctrl = this;
-	
-	    function getAllCastMembers() {
-	        return comicAPIService.cast.get().$promise.then(function (data) {
-	            ctrl.cast_members = data.results;
-	            console.log('CAST MEMBERS: ', ctrl.cast_members);
-	        }, function (error) {
-	            console.log('ERROR: ', error);
-	        });
-	    }
-	
-	    function init() {
-	        getAllCastMembers();
-	    }
-	
-	    console.log('HERE');
-	    init();
-	}
-	
-	exports.default = CastPageController;
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _app = __webpack_require__(24);
+	var _app = __webpack_require__(21);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _app3 = __webpack_require__(25);
+	var _app3 = __webpack_require__(22);
 	
 	var _app4 = _interopRequireDefault(_app3);
 	
@@ -43013,13 +42947,13 @@
 	exports.default = appComponent;
 
 /***/ },
-/* 24 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = "<header>\n    <nav class=\"navbar navbar-static-top\">\n        <div class=\"container-fluid\">\n            <div class=\"row\">\n                \n                <div class=\"header-all\">\n\n                    <div class=\"header-image\">\n                        <!-- <a ui-sref=\"index\"> -->\n                        <a ui-sref=\"index({pageNumber: appCtrl.last_page })\">\n                            <img ng-src=\"{{ appCtrl.randomHeaderImage.image }}\" class=\"img-responsive\" alt=\"Critterlopers\">\n                        </a>\n                    </div>\n\n                    <div class=\"header-title\">CRITTERLOPERS</div>\n                    <div class=\"header-byline\">A Story Of Beasts Suburban.</div>\n                    \n                    <div class=\"header-links header-links-top\">\n                        <span>\n                            <a ui-sref=\"index({pageNumber: appCtrl.last_page})\">HOME</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"archivePage\">ARCHIVE</a>\n                        </span>\n                        <span>\n                            <a ui-sref=\"aboutPage\">ABOUT</a>\n                        </span>\n                        <!-- <span><a ui-sref=\"#\">CAST</a></span> -->\n                        <!-- <span><a ui-sref=\"#\">BLOG</a></span> -->\n                    </div>\n                    <!-- <div class=\"header-links header-links-bottom\"> -->\n                        <!-- <span><a ui-sref=\"#\">SUPPORT</a></span> -->\n                    <!-- </div> -->\n                </div>\n                \n            </div>\n        </div>\n    </nav>\n</header>\n\n<div class=\"container-fluid\">\n\n    <div ui-view></div>\n\n</div>\n\n"
 
 /***/ },
-/* 25 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
