@@ -12,4 +12,4 @@ boto3==1.4.7
 django-storages==1.6.5
 
 django-cors-headers==2.1.0
-Pillow==4.2
+Pillow==5.0.0
