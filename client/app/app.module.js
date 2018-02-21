@@ -46,11 +46,24 @@ const AppModule = angular.module('app', [
         });
     })
 
-    .run(($http, $cookies) => {
+    .run(($http, $cookies, $stateParams) => {
+        console.log('HTTP: ', $stateParams);
+
         // Add a header for CSRF token, so that POST does not fail to our API
         // eslint-disable-next-line no-param-reassign
         $http.defaults.headers.common['X-CSRFToken'] = $cookies.get('csrftoken');
+        let page;
+        // send updated of page changes to Google Analytics
+        // $rootScope.$on('$stateChangeSuccess', function (event) {
+        if ($stateParams.pageNumber != page) {
+            page = $stateParams.pageNumber;
+            ga('send', 'pageview');
+        }
+        // });
     });
+
+
+
 
 export default AppModule;
 

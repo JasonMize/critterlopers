@@ -101,10 +101,20 @@
 	            }
 	        }
 	    });
-	}).run(function ($http, $cookies) {
+	}).run(function ($http, $cookies, $stateParams) {
+	    console.log('HTTP: ', $stateParams);
+	
 	    // Add a header for CSRF token, so that POST does not fail to our API
 	    // eslint-disable-next-line no-param-reassign
 	    $http.defaults.headers.common['X-CSRFToken'] = $cookies.get('csrftoken');
+	    var page = void 0;
+	    // send updated of page changes to Google Analytics
+	    // $rootScope.$on('$stateChangeSuccess', function (event) {
+	    if ($stateParams.pageNumber != page) {
+	        page = $stateParams.pageNumber;
+	        ga('send', 'pageview');
+	    }
+	    // });
 	});
 	
 	exports.default = AppModule;
@@ -42717,9 +42727,7 @@
 	
 	function comicAPIService($resource) {
 	    var api = {
-	        getComic: function getComic() {
-	            var pageNumber = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-	
+	        getComic: function getComic(pageNumber) {
 	            return this.issuePage.get({ pageNumber: pageNumber }).$promise.then(function (data) {
 	                console.log('COMIC API DATA: ', data);
 	                return data;

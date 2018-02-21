@@ -1,7 +1,7 @@
 
 function comicAPIService($resource) {
     const api = {
-        getComic(pageNumber = '') {
+        getComic(pageNumber) {
             return this.issuePage.get({pageNumber}).$promise.then((data) => {
                 console.log('COMIC API DATA: ', data);
                 return data;
