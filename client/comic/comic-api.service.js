@@ -8,16 +8,14 @@ function comicAPIService($resource) {
             });
         },
         headerimage: $resource('/api/headerimage/:id/',
-            { id: '@id' },
+            { id: '@id' }
         ),
         comic: $resource('/api/comic/:pageNumber/',
-            { page_number: '@pageNumber' },
+            { page_number: '@pageNumber' }
         ),
         issuePage: $resource('/api/comic/:pageNumber/',
-            {
-                page_number: '@pageNumber'
-            }
-        ),
+            { page_number: '@pageNumber' }
+        )
         // cast: $resource('/api/cast/:id/',
             // { id: '@id' },
         // ),

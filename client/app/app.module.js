@@ -13,9 +13,14 @@ const AppModule = angular.module('app', [
 ])
     .component('app', appComponent)
 
-    .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+    .config(($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) => {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode(true);
+
+        function $qProvider ($qProvider){
+            $qProvider.errorOnUnhandledRejections(false);
+        };
+
         $stateProvider
         .state('aboutPage', {
             url: '/about',
@@ -39,7 +44,7 @@ const AppModule = angular.module('app', [
                 comic(comicAPIService, $stateParams) {
                     return comicAPIService
                     .getComic(
-                        $stateParams.pageNumber
+                        $stateParams.pageNumber,
                     );
                 },
             },
@@ -59,7 +64,6 @@ const AppModule = angular.module('app', [
             page = $stateParams.pageNumber;
             ga('send', 'pageview');
         }
-        // });
     });
 
 

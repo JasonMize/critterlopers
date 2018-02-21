@@ -80,9 +80,14 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) {
 	    $urlRouterProvider.otherwise('/');
 	    $locationProvider.html5Mode(true);
+	
+	    function $qProvider($qProvider) {
+	        $qProvider.errorOnUnhandledRejections(false);
+	    };
+	
 	    $stateProvider.state('aboutPage', {
 	        url: '/about',
 	        component: 'aboutPage'
@@ -114,7 +119,6 @@
 	        page = $stateParams.pageNumber;
 	        ga('send', 'pageview');
 	    }
-	    // });
 	});
 	
 	exports.default = AppModule;
@@ -46661,9 +46665,7 @@
 	
 	        headerimage: $resource('/api/headerimage/:id/', { id: '@id' }),
 	        comic: $resource('/api/comic/:pageNumber/', { page_number: '@pageNumber' }),
-	        issuePage: $resource('/api/comic/:pageNumber/', {
-	            page_number: '@pageNumber'
-	        })
+	        issuePage: $resource('/api/comic/:pageNumber/', { page_number: '@pageNumber' })
 	        // cast: $resource('/api/cast/:id/',
 	        // { id: '@id' },
 	        // ),
