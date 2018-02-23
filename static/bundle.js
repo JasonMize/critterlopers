@@ -84,10 +84,10 @@
 	    $urlRouterProvider.otherwise('/');
 	    $locationProvider.html5Mode(true);
 	
-	    function $qProvider(y) {
-	        y.errorOnUnhandledRejections(false);
+	    function handleError($qProvider) {
+	        $qProvider.errorOnUnhandledRejections(false);
 	    };
-	    $qProvider($qProvider);
+	    handleError($qProvider);
 	
 	    $stateProvider.state('aboutPage', {
 	        url: '/about',
