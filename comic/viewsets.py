@@ -35,7 +35,7 @@ class IssueComicViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pageNumber):
         sortOrder = Comic.sortOrder(pageNumber)
-        queryset = Comic.objects.filter(page_number=pageNumber).all()
+        queryset = Comic.objects.filter(page_number=pageNumber)
 
         comics = get_object_or_404(queryset)
         serializer = ComicSerializer(comics)
