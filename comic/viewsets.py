@@ -6,6 +6,8 @@ from .serializers import *
 
 from pprint import pprint
 
+import traceback
+
 class ComicViewSet(viewsets.ModelViewSet):
     queryset = Comic.objects.order_by(
         '-sort_number', 
@@ -34,30 +36,18 @@ class IssueComicViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pageNumber):
-        print('PAGE NUMBER: ', pageNumber)
-        print('REQUEST: ', request)
-        # pprint(dir(request))
+        try:
 
-        print('SELF: ', self)
+            sortOrder = Comic.sortOrder(pageNumber)
+            queryset = Comic.objects.filter(page_number=pageNumber)
+            comic = get_object_or_404(queryset)
+            serializer = ComicSerializer(comic)
 
-        # import traceback
+            tb = serializer.data
 
-        # try:
-        #     raise ValueError
-        # except:
-        #     tb = traceback.format_exc()
-        # else:
-        #     tb = "No error"
-        # finally:
-        #     print (tb)
+        except:
+            tb = traceback.format_exc()
 
-        sortOrder = Comic.sortOrder(pageNumber)
-        queryset = Comic.objects.filter(page_number=pageNumber)
-        print('QUERYSET: ')
-        pprint(queryset)
-        comic = get_object_or_404(queryset)
-        serializer = ComicSerializer(comic)
-
-        return Response(serializer.data)
-
+        finally:
+            return Response(tb)
 
