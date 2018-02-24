@@ -34,11 +34,29 @@ class IssueComicViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pageNumber):
-        sortOrder = Comic.sortOrder(pageNumber)
-        queryset = Comic.objects.filter(page_number=21)
+        print('PAGE NUMBER: ', pageNumber)
+        print('REQUEST: ', request)
+        # pprint(dir(request))
 
-        comics = get_object_or_404(queryset)
-        serializer = ComicSerializer(comics)
+        print('SELF: ', self)
+
+        # import traceback
+
+        # try:
+        #     raise ValueError
+        # except:
+        #     tb = traceback.format_exc()
+        # else:
+        #     tb = "No error"
+        # finally:
+        #     print (tb)
+
+        sortOrder = Comic.sortOrder(pageNumber)
+        queryset = Comic.objects.filter(page_number=pageNumber)
+        print('QUERYSET: ')
+        pprint(queryset)
+        comic = get_object_or_404(queryset)
+        serializer = ComicSerializer(comic)
 
         return Response(serializer.data)
 
