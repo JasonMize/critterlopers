@@ -35,6 +35,7 @@ class IssueComicViewSet(viewsets.ViewSet):
         serializer = ComicSerializer(queryset, many=True)
         return Response(serializer.data)
 
+
     def retrieve(self, request, pageNumber):
         try:
             sortOrder = Comic.sortOrder(pageNumber)
@@ -43,6 +44,7 @@ class IssueComicViewSet(viewsets.ViewSet):
             serializer = ComicSerializer(comic)
 
             info = serializer.data
+
         except:
             # reroute non-page to the last page
             default_comic = Comic.objects.filter(page_number=1)

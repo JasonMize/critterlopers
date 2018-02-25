@@ -11,6 +11,13 @@ function ComicPageController(comicAPIService, $stateParams) {
         .then((data) => {
             ctrl.comic = data;
             console.log('COMIC: ', ctrl.comic);
+
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'pageview',
+                eventAction: ctrl.comic.page_number,
+            });
+
         });
     }
 

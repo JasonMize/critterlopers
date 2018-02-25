@@ -82,8 +82,11 @@
 	
 	var AppModule = _angular2.default.module('app', [_angularUiRouter2.default, _angularCookies2.default, _comic2.default.name]).component('app', _app2.default).config(function ($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) {
 	    $urlRouterProvider.otherwise('/');
+	
+	    // removes'#' from url path
 	    $locationProvider.html5Mode(true);
 	
+	    // handles error from angular-ui-router and angularjs updates not working together
 	    function handleError($qProvider) {
 	        $qProvider.errorOnUnhandledRejections(false);
 	    };
@@ -113,13 +116,9 @@
 	    // Add a header for CSRF token, so that POST does not fail to our API
 	    // eslint-disable-next-line no-param-reassign
 	    $http.defaults.headers.common['X-CSRFToken'] = $cookies.get('csrftoken');
-	    var page = void 0;
-	    // send updated of page changes to Google Analytics
-	    // $rootScope.$on('$stateChangeSuccess', function (event) {
-	    if ($stateParams.pageNumber != page) {
-	        page = $stateParams.pageNumber;
-	        ga('send', 'pageview');
-	    }
+	
+	    // Google Analytics
+	    window.ga('create', 'UA-114427488-1', 'auto');
 	});
 	
 	exports.default = AppModule;
@@ -46709,7 +46708,7 @@
 /* 97 */
 /***/ (function(module, exports) {
 
-	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n\n<div class=\"page-controls row\">\n    <span class=\"page-controls-first col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: 1 })\">\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-previous col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number - 1 })\">\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-next col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number + 1 })\">\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-last col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.last_page })\">\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n\n\n"
+	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n\n<div class=\"page-controls row\">\n    <span class=\"page-controls-first col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: 1 })\">\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-previous col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number - 1 })\">\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-next col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number + 1 })\">\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-last col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.last_page })\">\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n\n\n"
 
 /***/ }),
 /* 98 */
@@ -46730,6 +46729,12 @@
 	        return comicAPIService.getComic($stateParams.pageNumber).then(function (data) {
 	            ctrl.comic = data;
 	            console.log('COMIC: ', ctrl.comic);
+	
+	            ga('send', {
+	                hitType: 'event',
+	                eventCategory: 'pageview',
+	                eventAction: ctrl.comic.page_number
+	            });
 	        });
 	    }
 	
@@ -46780,13 +46785,18 @@
 /* 101 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	function AboutPageController() {
 	    var ctrl = this;
+	    ga('send', {
+	        hitType: 'event',
+	        eventCategory: 'pageview',
+	        eventAction: 'about'
+	    });
 	}
 	
 	exports.default = AboutPageController;
@@ -46829,7 +46839,7 @@
 /* 104 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -46843,6 +46853,13 @@
 	        // console.log('GET ALL COMICS CALLED');
 	        return comicAPIService.comic.query().$promise.then(function (data) {
 	            archCtrl.comics = data;
+	
+	            ga('send', {
+	                hitType: 'event',
+	                eventCategory: 'pageview',
+	                eventAction: 'archive'
+	            });
+	
 	            // console.log('ALL COMICS ARCHIVE: ', archCtrl.comics);
 	        }, function (error) {
 	            // console.log('ARCHIVE PAGE CONTROLLER: GET ALL COMICS: ERROR: ', error);

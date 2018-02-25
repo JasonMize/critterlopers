@@ -15,8 +15,11 @@ const AppModule = angular.module('app', [
 
     .config(($stateProvider, $urlRouterProvider, $locationProvider, $qProvider) => {
         $urlRouterProvider.otherwise('/');
+
+        // removes'#' from url path
         $locationProvider.html5Mode(true);
 
+        // handles error from angular-ui-router and angularjs updates not working together
         function handleError ($qProvider){
             $qProvider.errorOnUnhandledRejections(false);
         };
@@ -58,13 +61,9 @@ const AppModule = angular.module('app', [
         // Add a header for CSRF token, so that POST does not fail to our API
         // eslint-disable-next-line no-param-reassign
         $http.defaults.headers.common['X-CSRFToken'] = $cookies.get('csrftoken');
-        let page;
-        // send updated of page changes to Google Analytics
-        // $rootScope.$on('$stateChangeSuccess', function (event) {
-        if ($stateParams.pageNumber != page) {
-            page = $stateParams.pageNumber;
-            ga('send', 'pageview');
-        }
+
+        // Google Analytics
+        window.ga('create', 'UA-114427488-1', 'auto'); 
     });
 
 
