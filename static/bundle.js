@@ -46709,7 +46709,7 @@
 /* 97 */
 /***/ (function(module, exports) {
 
-	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n\n<div class=\"page-controls\">\n    <span class=\"page-controls-first\">\n        <a ui-sref=\"index({ pageNumber: 1 })\">\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-previous\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number - 1 })\">\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-next\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number + 1 })\">\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-last\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.last_page })\">\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n\n\n"
+	module.exports = "\n<h1>{{ comicCtrl.comic.title }}</h1>\n<div>\n    <span>Issue: {{ comicCtrl.comic.issue }}</span>\n    <span>Page: {{ comicCtrl.comic.page_number }}</span>  \n</div>\n\n<div class=\"page-controls row\">\n    <span class=\"page-controls-first col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: 1 })\">\n            <i class=\"fa fa-step-backward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-previous col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number - 1 })\">\n            <i class=\"fa fa-caret-left\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n    <span class=\"page-controls-next col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.page_number + 1 })\">\n            <i class=\"fa fa-caret-right\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n\n    <span class=\"page-controls-last col-xs-3\">\n        <a ui-sref=\"index({ pageNumber: comicCtrl.comic.last_page })\">\n            <i class=\"fa fa-step-forward\" aria-hidden=\"true\"></i>\n        </a>\n    </span>\n</div>\n\n<div>\n    <img src=\"{{ comicCtrl.comic.image }}\" alt=\"{{ comicCtrl.comic.title }}\" class=\"img-responsive\">\n</div>\n\n\n"
 
 /***/ }),
 /* 98 */
@@ -46724,6 +46724,7 @@
 	function ComicPageController(comicAPIService, $stateParams) {
 	    console.log('COMIC PAGE CONTROLLER: $stateParams: ', $stateParams);
 	    var ctrl = this;
+	    var disable_next = false;
 	
 	    function getComic() {
 	        return comicAPIService.getComic($stateParams.pageNumber).then(function (data) {
@@ -46773,7 +46774,7 @@
 /* 100 */
 /***/ (function(module, exports) {
 
-	module.exports = "<h1>ABOUT THE CRITTERS</h1>\n\n<p>Critterlopers is the brain child of brothers Tony and Jason Mize.</p>\n\n<p>It is the saga of a rebellious cadre of animals plotting the overthrow of the humans.  Just as soon as they get enough money.</p>\n\n<br>\n\n<p>To contact us, send email to:  jasonemize@gmail.com</p>\n\n<div>\n    <img src=\"static/images/about-tony-jason.jpg\" alt=\"Tony and Jason\" class=\"img-responsive about-image\" />\n    <p>A rather rare photo of T. Mize (left) and J. Mize (right) at one of their late night meetings, in the treehouse from which they secretly observed and documented the nascent Critterlopers revolution.</p>\n</div>\n\n"
+	module.exports = "<h1>ABOUT THE CRITTERS</h1>\n\n<p>Critterlopers is the brain child of brothers Tony and Jason Mize.</p>\n\n<p>It is the saga of a rebellious cadre of animals plotting the overthrow of the humans.  Just as soon as they get enough money.</p>\n\n<br>\n\n<p>To contact us, send email to:  <a href=\"mailto:critterlopers@gmail.com\">critterlopers@gmail.com</a></p>\n\n<div>\n    <img src=\"static/images/about-tony-jason.jpg\" alt=\"Tony and Jason\" class=\"img-responsive about-image\" />\n    <p>A rather rare photo of T. Mize (left) and J. Mize (right) at one of their late night meetings, in the treehouse from which they secretly observed and documented the nascent Critterlopers revolution.</p>\n</div>\n\n"
 
 /***/ }),
 /* 101 */

@@ -2,6 +2,7 @@
 function ComicPageController(comicAPIService, $stateParams) {
     console.log('COMIC PAGE CONTROLLER: $stateParams: ', $stateParams);
     const ctrl = this;
+    let disable_next = false;
 
     function getComic() {
         return comicAPIService.getComic(

@@ -77,10 +77,17 @@ a:visited {
 /*****************************************************/
 /*    COMIC PAGE    */
 /*****************************************************/
+.page-controls {
+    max-width: 800px;
+    text-align: center;
+}
 .page-controls i {
     font-size: 5em;
-    margin-right: 10vw;
 }
+.page-controls a {
+    text-decoration: none;
+}
+
 
 
 /*****************************************************/

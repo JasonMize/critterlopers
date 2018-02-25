@@ -42,58 +42,19 @@ class IssueComicViewSet(viewsets.ViewSet):
             comic = get_object_or_404(queryset)
             serializer = ComicSerializer(comic)
 
-            tb = serializer.data
+            info = serializer.data
         except:
-            tb = traceback.format_exc()
+            # reroute non-page to the last page
+            default_comic = Comic.objects.filter(page_number=1)
+            last_page = default_comic[0].last_page
+            sortOrder = Comic.sortOrder(last_page)
+            queryset = Comic.objects.filter(page_number = last_page)
+            comic = get_object_or_404(queryset)
+            serializer = ComicSerializer(comic)
+
+            info = serializer.data
 
         finally:
-            return Response(tb)
-
-# "Traceback (most recent call last):
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/backends/utils.py\", line 65, in execute
-#     return self.cursor.execute(sql, params)
-# psycopg2.ProgrammingError: operator does not exist: character varying = integer
-# LINE 1: ...d\" FROM \"comic_comic\" WHERE \"comic_comic\".\"page_number\" = 38
-#                                                                    ^
-# HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
-
-
-# The above exception was the direct cause of the following exception:
-
-# Traceback (most recent call last):
-#   File \"/opt/python/current/app/comic/viewsets.py\", line 43, in retrieve
-#     comic = get_object_or_404(queryset)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/shortcuts.py\", line 85, in get_object_or_404
-#     return queryset.get(*args, **kwargs)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/query.py\", line 374, in get
-#     num = len(clone)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/query.py\", line 232, in __len__
-#     self._fetch_all()
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/query.py\", line 1118, in _fetch_all
-#     self._result_cache = list(self._iterable_class(self))
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/query.py\", line 53, in __iter__
-#     results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/sql/compiler.py\", line 886, in execute_sql
-#     raise original_exception
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/models/sql/compiler.py\", line 876, in execute_sql
-#     cursor.execute(sql, params)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/backends/utils.py\", line 65, in execute
-#     return self.cursor.execute(sql, params)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/utils.py\", line 94, in __exit__
-#     six.reraise(dj_exc_type, dj_exc_value, traceback)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/utils/six.py\", line 685, in reraise
-#     raise value.with_traceback(tb)
-#   File \"/opt/python/run/venv/local/lib/python3.6/site-packages/django/db/backends/utils.py\", line 65, in execute
-#     return self.cursor.execute(sql, params)
-# django.db.utils.ProgrammingError: operator does not exist: character varying = integer
-# LINE 1: ...d\" FROM \"comic_comic\" WHERE \"comic_comic\".\"page_number\" = 38
-#                                                                    ^
-# HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
-
-# "
-
-
-
-
+            return Response(info)
 
 
