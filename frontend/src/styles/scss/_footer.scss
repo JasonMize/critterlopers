@@ -1,0 +1,24 @@
+/*****************************************************/
+/*    FOOTER    */
+/*****************************************************/
+footer { padding: 50px 15px 15px 15px; }
+.footer-links { padding-top: 15px; }
+.footer-links span {
+    margin-right: 15px;
+    font-size: 2em;
+}
+.footer-social-media a div {
+    float: left;
+    width: 80px;
+    margin-right: 25px;
+}
+.footer-social-media a {
+}
+.footer-social-media i {
+    font-size: 5em;
+}
+.footer-copyright {
+}
+@media screen and (max-width:  480px) {
+    .footer-links span { font-size: .9em; margin: 0px 15px 0px 0px; }
+}
