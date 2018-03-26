@@ -10,7 +10,7 @@ class Archive extends Component {
 
   render () {
     return (
-      <div></div>
+      <div>Archive</div>
     );
   }
 }
