@@ -29,34 +29,41 @@ class IssueViewSet(viewsets.ModelViewSet):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
 
-class IssueComicViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = Comic.objects.all()
-        serializer = ComicSerializer(queryset, many=True)
-        return Response(serializer.data)
+class IssueComicViewSet(viewsets.ModelViewSet):
+    print('ISSUE COMIC VIEWSET: ')
+    queryset = Comic.objects.all().filter(id=2)
+    serializer_class = ComicSerializer
+
+# class IssueComicViewSet(viewsets.ViewSet):
+    # def list(self, request):
+    #     print('LIST')
+    #     queryset = Comic.objects.all()
+    #     serializer = ComicSerializer(queryset, many=True)
+    #     return Response(serializer.data)
 
 
-    def retrieve(self, request, pageNumber):
-        try:
-            sortOrder = Comic.sortOrder(pageNumber)
-            queryset = Comic.objects.filter(page_number=int(pageNumber))
-            comic = get_object_or_404(queryset)
-            serializer = ComicSerializer(comic)
+    # def retrieve(self, request, pageNumber):
+    #     print('RETRIEVE')
+    #     try:
+    #         sortOrder = Comic.sortOrder(pageNumber)
+    #         queryset = Comic.objects.filter(page_number=int(pageNumber))
+    #         comic = get_object_or_404(queryset)
+    #         serializer = ComicSerializer(comic)
 
-            info = serializer.data
+    #         info = serializer.data
 
-        except:
-            # reroute non-page to the last page
-            default_comic = Comic.objects.filter(page_number=1)
-            last_page = default_comic[0].last_page
-            sortOrder = Comic.sortOrder(last_page)
-            queryset = Comic.objects.filter(page_number = last_page)
-            comic = get_object_or_404(queryset)
-            serializer = ComicSerializer(comic)
+    #     except:
+    #         # reroute non-page to the last page
+    #         default_comic = Comic.objects.filter(page_number=1)
+    #         last_page = default_comic[0].last_page
+    #         sortOrder = Comic.sortOrder(last_page)
+    #         queryset = Comic.objects.filter(page_number = last_page)
+    #         comic = get_object_or_404(queryset)
+    #         serializer = ComicSerializer(comic)
 
-            info = serializer.data
+    #         info = serializer.data
 
-        finally:
-            return Response(info)
+    #     finally:
+    #         return Response(info)
 
 

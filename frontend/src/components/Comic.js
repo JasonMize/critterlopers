@@ -7,7 +7,7 @@ import {
 class Comic extends Component {
   constructor(props) {
     super(props);
-    let CancelToken = axios.CancelToken;
+    // let CancelToken = axios.CancelToken;
 
     this.state = {
       comic: [],

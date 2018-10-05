@@ -1,6 +1,6 @@
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 
 
-class AppView(TemplateView):
-    template_name = 'art/app.html'
+# class AppView(TemplateView):
+#     template_name = 'art/app.html'
 
